@@ -14,7 +14,7 @@ namespace Domain.Model.Product
         private Price PriceOfProduct;
         private String Comments;
 
-        public Product(String name, String type, String comm=""){}
+        public Product(String name, String type, String comm="Wstawiłąem sobie tekst"){}
         public Price GetPrice();
         public void SetPrice(Price a);
         public void SetComments(String comm);
