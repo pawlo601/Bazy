@@ -1,0 +1,5 @@
+C:\Documents\Bazy\Faktury\Domain\obj\Debug\Finance.Domain.csprojResolveAssemblyReference.cache
+C:\Documents\Bazy\Faktury\Domain\bin\Debug\Domain.dll
+C:\Documents\Bazy\Faktury\Domain\bin\Debug\Domain.pdb
+C:\Documents\Bazy\Faktury\Domain\obj\Debug\Domain.dll
+C:\Documents\Bazy\Faktury\Domain\obj\Debug\Domain.pdb

@@ -1,0 +1,2 @@
+C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Infrastructure.exe.config
+C:\Documents\Bazy\Faktury\Infrastructure\obj\Debug\Finance.Infrastructure.csprojResolveAssemblyReference.cache
