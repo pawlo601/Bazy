@@ -11,7 +11,12 @@ namespace Domain.Model.Product
         private Money NetPrice;
         public float VAT { get; set; }
         public Price(Money a, float vat);
-        public Money GetGross(String curr);
+        public Price(long val, String waluta, float vat)
+        {
+            this.NetPrice = new Money(val, waluta);
+            this.VAT = vat;
+        }
+        public Money GetGross();
         public Money GetNet();
     }
 }

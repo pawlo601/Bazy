@@ -9,6 +9,11 @@ namespace Domain.Model.Client
     public abstract class IdentificationNumber
     {
         private String Number;
+        public IdentificationNumber(string num)
+        {
+            Number = num;
+        }
         public String GetNUmber();
+        public String ToString();
     }
 }

@@ -13,5 +13,6 @@ namespace Domain.Model.Client
         public String NameOfCompany { get; set; }
 
         public PersonalData(String name, String surname, String com);
+        public string ToString() { return ""; }
     }
 }

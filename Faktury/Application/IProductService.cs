@@ -11,6 +11,6 @@ namespace Application
     public interface IProductService
     {
         void CreateDoc(Product p);
-        Money Exchange(String wala, String walb);
+        Money Exchange(Money pieniadz, String wal);
     }
 }

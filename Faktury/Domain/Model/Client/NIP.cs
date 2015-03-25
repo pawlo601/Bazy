@@ -8,6 +8,10 @@ namespace Domain.Model.Client
 {
     public class NIP : IdentificationNumber
     {
+        public NIP(string number)
+            :base(number)
+        {
 
+        }
     }
 }

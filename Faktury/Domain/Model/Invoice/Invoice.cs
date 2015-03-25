@@ -11,17 +11,18 @@ namespace Domain.Model.Invoice
     {
         private String IdInvoice;
         private String Title;
-        private DateTime DateOfCreate;
-        private Domain.Model.Client.Client Contractor;
+        public DateTime DateOfCreate{get;}
+        public Domain.Model.Client.Client Contractor{get;}
         private List<Item> ListOfProducts;
         public String Comments;
 
-        public Invoice(String title, DateTime date, Domain.Model.Client.Client contractor, List<Item> list, String comm = "");
+        public Invoice(String title, DateTime date, Domain.Model.Client.Client contractor, List<Item> list, String comm );
         public String GetId();
         public void ChengeTitle(String title);
         public void ChengeDate(DateTime date);
         public void ChengeContractor(Domain.Model.Client.Client contractor);
         public void AddProduct(Domain.Model.Product.Product product);
         public Item GetItem(String IdProduct);
+        public void CalculateDiscount();
     }
 }

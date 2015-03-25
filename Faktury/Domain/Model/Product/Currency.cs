@@ -15,8 +15,10 @@ namespace Domain.Model.Product
     {
         private static List<Curr> ListOfCurrency;
         private static Currency instance;
-        private Currency() { }
-        public double GetExchange(String name)
+        private Currency() 
+        {
+        }
+        public double GetExchange(string name)
         {
             if(instance==null)
             {
@@ -29,7 +31,7 @@ namespace Domain.Model.Product
                 return pomocnicza;
 
         }
-        private double Find(String Name)
+        private double Find(string Name)
         {
             foreach ( Curr a in ListOfCurrency)
             {
@@ -38,5 +40,6 @@ namespace Domain.Model.Product
             }
             return -1.0f;
         }
+        public void Refresh();
     }
 }

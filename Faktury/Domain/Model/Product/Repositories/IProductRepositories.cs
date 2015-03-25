@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Product.Repositories
 {
-    interface IProductRepositories
+    public interface IProductRepositories
     {
         void Insert(Product client);
         void Delete(String Id);
         Product Find(String Id);
-        List<Curr> GetCurrncy();
+        List<Curr> GetCurrency();
         List<Product> FindAll();
     }
 }

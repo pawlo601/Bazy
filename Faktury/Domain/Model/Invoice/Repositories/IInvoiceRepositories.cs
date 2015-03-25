@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Invoice.Repositories
 {
-    interface IInvoiceRepositories
+    public interface IInvoiceRepositories
     {
         void Insert(Invoice client);
         void Delete(String Id);

@@ -8,5 +8,9 @@ namespace Domain.Model.Client
 {
     public class REGON : IdentificationNumber
     {
+        public REGON(string number)
+            :base(number)
+        {
+        }
     }
 }

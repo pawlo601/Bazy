@@ -14,5 +14,7 @@ namespace Domain.Model.Invoice
         public Item(Domain.Model.Product.Product product, int vol, Domain.Model.Product.Money money);
         public void ChangeVolume(int vol);
         public void ChangeCost(Domain.Model.Product.Money cost);
+        public Domain.Model.Product.Money GetGross();
+        public Domain.Model.Product.Money GetNet();
     }
 }

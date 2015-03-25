@@ -8,7 +8,7 @@ namespace Domain.Model.Client
 {
     public class Client
     {
-        private String IdClient { get { return IdClient; } }
+        public String IdClient { get { return IdClient; } }
         public PersonalData Name { get; set; }
         public Address Lokalizacja { get; set; }
         public String Type { get { return Type; } }
