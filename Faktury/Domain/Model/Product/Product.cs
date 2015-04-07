@@ -6,32 +6,29 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Product
 {
+    public enum TypProduktu { Przedmiot, Usługa};
     public class Product
     {
-        private string IDProduct;
-        public string NameOfProduct;
-        public string Type;
-        private Price PriceOfProduct;
-        private string Comments;
+        public Guid IDProduct { get; private set; }
+        public string NameOfProduct { get; set; }
+        public TypProduktu Type { get; set; }
+        public Price PriceOfProduct { get; set; }
+        public string Comments { get; private set; }
 
-        public Product(string name, string type, string comm)
+        public Product(string name, TypProduktu type, Price price)
         {
-            this.IDProduct = SetId(name);
+            this.IDProduct = Guid.NewGuid();
             this.NameOfProduct = name;
-            if (type == "Usługa" || type == "Produkt")
-                this.Type = type;
-            else
-                throw new ArgumentException("Zły argument,type.\n");
-            this.Comments = comm;
+            this.Type = type;
+            this.PriceOfProduct = price;
+            Comments = "";
         }
-        public Price GetPrice();
-        public void SetPrice(Price a);
-        public void SetComments(string comm);
-        public void ChengeName(string name);
-        public string GetId();
-        private string SetId(string name)
+        public void SetComments(string comm)
         {
-            return "Kod:" + name;
+            if (comm.Length < 250)
+                this.Comments = comm.Substring(0, 250);
+            else
+                this.Comments = comm;
         }
     }
 }

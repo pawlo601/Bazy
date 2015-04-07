@@ -8,13 +8,46 @@ namespace Domain.Model.Invoice
 {
     public class Item
     {
-        private Domain.Model.Product.Product Thing;
-        private int Volume;
-        private Domain.Model.Product.Money Cost;
-        public Item(Domain.Model.Product.Product product, int vol, Domain.Model.Product.Money money);
-        public void ChangeVolume(int vol);
-        public void ChangeCost(Domain.Model.Product.Money cost);
-        public Domain.Model.Product.Money GetGross();
-        public Domain.Model.Product.Money GetNet();
+        public Product.Product Thing { get; private set; }
+        public int Volume { get; private set; }
+        public Product.Money Cost { get; private set; }
+
+        public Item(Product.Product product, int vol)
+        {
+            this.Thing = product;
+            ChangeVolume(vol);
+        }
+        public void ChangeVolume(int vol)
+        {
+            if (vol < 0)
+                throw new Exception("Zła ilość produktów.\n");
+            else
+                this.Volume = vol;
+
+        }
+        public void Count()
+        {
+            Cost = Thing.PriceOfProduct.GetGross();
+            Cost.Value *= Volume;
+        }
+        public void Count(Client.Discount dis)
+        {
+            if (Thing.IDProduct == dis.IdProduct)
+            {
+                if (dis.Type == Client.Bonus.Netto)
+                {
+                    Cost = Thing.PriceOfProduct.NetPrice;
+                    Cost.Value *= Volume;
+                }
+                if(dis.Type == Client.Bonus.Zniżka)
+                {
+                    Cost = Thing.PriceOfProduct.NetPrice;
+                    Cost.Value *= Volume;
+                    Cost.Value *= (float)(1.0f - dis.ValueOfBonus);
+                }
+            }
+            else
+                throw new Exception("Nie ta zniżka.\n");
+        }
     }
 }

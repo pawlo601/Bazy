@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Client
 {
-    public enum Bonus { Zniżka, Netto, Brutto};
+    public enum Bonus { Zniżka, Netto};
     public class Discount
     {
         public Guid IdProduct
@@ -20,18 +20,14 @@ namespace Domain.Model.Client
             get { return Type; }
             private set { }
         }
-        public double ValueOfBonus 
-        { 
-            get { return ValueOfBonus; }
-            private set { }
-        }
+        public double ValueOfBonus { get; private set; }
         public Discount(Guid id, Bonus type)
         {
             IdProduct = id;
             Type = type;
             ValueOfBonus = 0.0f;
         }
-        public Discount(Guid id, Bonus type, Double bonus) 
+        public Discount(Guid id, Bonus type, double bonus) 
         {
             if(bonus<0.0f||bonus>=1.0f)
                 throw new Exception("Niewłaściwy bonus.\n");
