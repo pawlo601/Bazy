@@ -15,6 +15,7 @@ namespace Domain.Model.Invoice
         public Client.Client Contractor { get; private set; }
         public List<Item> ListOfProducts { get; private set; }
         public string Comments { get; private set; }
+        private bool CalcDis = false;
 
         public Invoice(string title, Client.Client contractor)
         {
@@ -71,10 +72,15 @@ namespace Domain.Model.Invoice
                 if (Flag)
                     a.Count();
             }
+            CalcDis = true;
         }
         public List<Product.Money> Podsumowanie()
         {
-            return null;
+            if (!CalcDis)
+                CalculateDiscount();
+            List<Product.Money> lista = new List<Product.Money>();
+ //Dokonczyc
+            return lista;
         }
     }
 }
