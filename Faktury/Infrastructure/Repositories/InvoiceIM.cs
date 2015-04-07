@@ -17,7 +17,7 @@ namespace Infrastructure.Repositories
         {
             PersonalData per1 = new PersonalData("A", "B", "C");
             Address ad1 = new Address("S1", "12", "Wrocław", "12-456", "Poland");
-            REGON a1 = new REGON("2346789");
+            Regon a1 = new Regon("2346789");
             NIP a2 = new NIP("123123");
             Client b=new Client(per1, ad1, a1, a2);
             Product a3 = new Product("Pierwsza rzecz", "Usługa", "Komentarz");

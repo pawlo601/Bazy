@@ -8,10 +8,45 @@ namespace Domain.Model.Client
 {
     public class NIP : IdentificationNumber
     {
-        public NIP(string number)
-            :base(number)
+        public NIP()
         {
-
+            this.Number = "0000000000";
         }
+        public NIP(string number)
+        {
+            if (number.Length != 10)
+                throw new Exception("Błąd w NIP-ie. Zła długość.\n");
+            else
+            {
+                int[] numbers = new int[number.Length];
+                for (int c = 0; c < number.Length; c++)
+                     if(!int.TryParse(number.Substring(c,1), out numbers[c]))
+                         throw new Exception("Błąd w NIP-ie.Niewłaściwe znaki.\n");
+                int sum =
+                    6 * numbers[0] +
+                    5 * numbers[1] +
+                    7 * numbers[2] +
+                    2 * numbers[3] +
+                    3 * numbers[4] +
+                    4 * numbers[5] +
+                    5 * numbers[6] +
+                    6 * numbers[7] +
+                    7 * numbers[8];
+                sum %= 11;
+                if (sum == numbers[9])
+                    this.Number = number;
+                else
+                    throw new Exception("Błąd w NIP-ie. Niepoprawne znaczenie.\n");
+            }
+        }
+        public override string GetNumber()
+        {
+            return base.GetNumber();
+        }
+        public override string ToString()
+        {
+            return "NIP: " + this.Number;
+        }
+
     }
 }

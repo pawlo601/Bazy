@@ -15,7 +15,7 @@ namespace Infrastructure.Repositories
         {
             PersonalData per1 = new PersonalData("A", "B", "C");
             Address ad1 = new Address("S1", "12", "Wrocław", "12-456", "Poland");
-            REGON a1 = new REGON("2346789");
+            Regon a1 = new Regon("2346789");
             NIP a2 = new NIP("123123");
             clients.Add(new Client(per1, ad1, a1, a2));
         }
@@ -55,7 +55,7 @@ namespace Infrastructure.Repositories
             }
             return null;
         }
-        public Client FindREGON(REGON regon)
+        public Client FindREGON(Regon regon)
         {
             foreach (var a in clients)
             {

@@ -8,13 +8,36 @@ namespace Domain.Model.Client
 {
     public class Address
     {
-        public String Street { get; set; }
-        public String NumberOfBuilding { get; set; }
-        public String City { get; set; }
-        public String Code { get; set; }
-        public String Country { get; set; }
-
-        public Address(String street, String number, String city, String code, String country);
+        public string Street { get; set; }
+        public string NumberOfBuilding { get; set; }
+        public string City { get; set; }
+        public string Code { get; set; }
+        public string Country { get; set; }
+        public Address()
+        {
+            Street = "Ulica";
+            NumberOfBuilding = "Numer";
+            City = "Miasto";
+            Code = "12-345";
+            Country = "Państwo";
+        }
+        public Address(String street, String number, 
+                        String city, String code, 
+                        String country)
+        {
+            Street = street;
+            NumberOfBuilding = number;
+            City = city;
+            Code = code;
+            Country = country;
+        }
+        public override string ToString()
+        {
+            return "Ulica: " + Street + " " + NumberOfBuilding + "\n" +
+                    "Miejscowość: " + City + " " + Code + "\n" +
+                    "Państwo: " + Country + "\n";
+                    
+        }
 
     }
 }

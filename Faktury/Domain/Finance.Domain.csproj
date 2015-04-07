@@ -52,7 +52,7 @@
     <Compile Include="Model\Client\NIP.cs" />
     <Compile Include="Model\Client\PersonalData.cs" />
     <Compile Include="Model\Client\Phone.cs" />
-    <Compile Include="Model\Client\REGON.cs" />
+    <Compile Include="Model\Client\Regon.cs" />
     <Compile Include="Model\Client\Repositories\IClientRepositories.cs" />
     <Compile Include="Model\Invoice\Invoice.cs" />
     <Compile Include="Model\Invoice\Item.cs" />

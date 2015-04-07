@@ -8,12 +8,22 @@ namespace Domain.Model.Client
 {
     public abstract class IdentificationNumber
     {
-        private String Number;
+        protected string Number;
+        public IdentificationNumber()
+        {
+            Number = "Przykładowy";
+        }
         public IdentificationNumber(string num)
         {
             Number = num;
         }
-        public String GetNUmber();
-        public String ToString();
+        public virtual string GetNumber()
+        {
+            return Number;
+        }
+        public override string ToString()
+        {
+            return "Numer: " + Number;
+        }
     }
 }

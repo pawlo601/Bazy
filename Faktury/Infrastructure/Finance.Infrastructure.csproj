@@ -42,9 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ClientIM.cs" />
+    <Compile Include="Repositories\InvoiceIM.cs" />
+    <Compile Include="Repositories\ProductIM.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Finance.Domain.csproj">
+      <Project>{482d8ba2-9fb4-4556-83ce-dc91116b46bd}</Project>
+      <Name>Finance.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

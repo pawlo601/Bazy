@@ -8,8 +8,8 @@ namespace Domain.Model.Product
 {
     public struct Curr
     {
-        public String Name;
-        public double ExchangeInTheRelationToPLN;
+        private Waluta Name;
+        private double ExchangeInTheRelationToPLN;
     }
     public class Currency
     {
@@ -17,8 +17,9 @@ namespace Domain.Model.Product
         private static Currency instance;
         private Currency() 
         {
+            ListOfCurrency = new List<Curr>();
         }
-        public double GetExchange(string name)
+        public double GetExchange(Waluta name)
         {
             if(instance==null)
             {
@@ -31,7 +32,7 @@ namespace Domain.Model.Product
                 return pomocnicza;
 
         }
-        private double Find(string Name)
+        private double Find(Waluta Name)
         {
             foreach ( Curr a in ListOfCurrency)
             {
@@ -40,6 +41,8 @@ namespace Domain.Model.Product
             }
             return -1.0f;
         }
-        public void Refresh();
+        public void Refresh()
+        {//implementacja potrzebna
+        }
     }
 }

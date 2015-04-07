@@ -7,14 +7,56 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Client
 {
+    public enum Bonus { Zniżka, Netto, Brutto};
     public class Discount
     {
-        private String IdProduct;
-        public String Type { get { return Type; } }
-        public Double Bonus { get { return Bonus; } }
-        public Discount(String type, Double bonus = 0.0f) { }
-        public String GetId() { return null; }
-        public void ChangeType(String type, Double bonus = 0.0f) { }
-        public void ChangeBonus(Double bonus) { }
+        public Guid IdProduct
+        {
+            get { return IdProduct; }
+            private set { }
+        }
+        public Bonus Type 
+        { 
+            get { return Type; }
+            private set { }
+        }
+        public double ValueOfBonus 
+        { 
+            get { return ValueOfBonus; }
+            private set { }
+        }
+        public Discount(Guid id, Bonus type)
+        {
+            IdProduct = id;
+            Type = type;
+            ValueOfBonus = 0.0f;
+        }
+        public Discount(Guid id, Bonus type, Double bonus) 
+        {
+            if(bonus<0.0f||bonus>=1.0f)
+                throw new Exception("Niewłaściwy bonus.\n");
+            IdProduct = id;
+            Type = type;
+            if (Type == Bonus.Zniżka)
+                ValueOfBonus = bonus;
+            else
+                ValueOfBonus = 0.0f;
+        }
+        public void ChangeType(Bonus type, double bonus ) 
+        {
+            if (type != Bonus.Zniżka)
+                this.ValueOfBonus = 0.0f;
+            else
+                this.ValueOfBonus = bonus;
+            this.Type = type;
+        }
+        public void ChangeBonus(double bonus) 
+        {
+            if (bonus >= 0.0f && bonus < 1.0f)
+                ValueOfBonus = bonus;
+            else
+                throw new Exception("Niewłaściwy bonus.\n");
+          
+        }
     }
 }
