@@ -11,11 +11,11 @@ namespace Domain.Model.Invoice
         public Product.Product Thing { get; private set; }
         public int Volume { get; private set; }
         public Product.Money Cost { get; private set; }
-
         public Item(Product.Product product, int vol)
         {
             this.Thing = product;
             ChangeVolume(vol);
+            Cost = new Product.Money(0.0f, Product.Waluta.PLN);
         }
         public void ChangeVolume(int vol)
         {
@@ -23,7 +23,6 @@ namespace Domain.Model.Invoice
                 throw new Exception("Zła ilość produktów.\n");
             else
                 this.Volume = vol;
-
         }
         public void Count()
         {

@@ -79,8 +79,34 @@ namespace Domain.Model.Invoice
             if (!CalcDis)
                 CalculateDiscount();
             List<Product.Money> lista = new List<Product.Money>();
- //Dokonczyc
+            foreach(Item a in ListOfProducts)
+            {
+                Dodaj(lista, a.Cost);
+            }
             return lista;
+        }
+        private void Dodaj(List<Product.Money> lista, Product.Money cost)
+        {
+            bool flag = true;
+            foreach(Product.Money a in lista)
+            {
+                if(a.NameOfCurrency.Equals(cost.NameOfCurrency))
+                {
+                    a.Value += cost.Value;
+                    flag = false;
+                }
+            }
+            if (flag)
+                lista.Add(cost);
+        }
+        public string ListOfProduct()
+        {
+            string text = "";
+            foreach(Item a in ListOfProducts)
+            {
+                text += a.Thing.NameOfProduct;
+            }
+            return text;
         }
     }
 }

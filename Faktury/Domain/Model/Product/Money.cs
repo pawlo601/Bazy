@@ -11,8 +11,7 @@ namespace Domain.Model.Product
     {
         public float Value { get; set; }
         public Waluta NameOfCurrency { get; private set; }
-        private static Currency Curr = Currency.GetInstance();
-
+        private static Currency Curr;
 
         public float GetValueIn(Waluta waluta)
         {
@@ -30,25 +29,17 @@ namespace Domain.Model.Product
                 }
             }
         }
-        public Money(float val, string waluta)
+        public Money(float val, Waluta waluta)
         {
-            bool Flags = true;
-            foreach(Waluta a in Enum.GetValues(typeof(Waluta)))
-            {
-                if (a.ToString() == waluta)
-                {
-                    Flags = false;
-                    NameOfCurrency = a;
-                }
-            }
-            if (Flags)
-                throw new Exception("Zła nazwa waluty.\n");
+            NameOfCurrency = waluta;
             if (val < 0.0f)
                 throw new Exception("Zła wartość.\n");
-            else
+            else 
+            {
                 Value = val;
+                Curr = new Currency();
+            }
         }
-
         public static void RefreshValue()
         {
             Curr.Refresh();

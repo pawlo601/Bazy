@@ -15,7 +15,7 @@ namespace Infrastructure.Repositories
         private List<Invoice> invoices = new List<Invoice>();
         public InvoiceIM()
         {
-            PersonalData per1 = new PersonalData("A", "B", "C");
+            PersonalData per1 = new PersonalData("A", "B");
             Address ad1 = new Address("S1", "12", "Wrocław", "12-456", "Poland");
             Regon a1 = new Regon("2346789");
             NIP a2 = new NIP("123123");

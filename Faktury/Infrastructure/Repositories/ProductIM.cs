@@ -15,24 +15,20 @@ namespace Infrastructure.Repositories
 
         public ProductIM()
         {
-            Product a1 = new Product("Pierwsza rzecz", "Usługa", "Komentarz");
-            Price c1 = new Price(10,"PLN",19.0f);
-            a1.SetPrice(c1);
+            Price c1 = new Price(10, Waluta.PLN, 19.0f);
+            Product a1 = new Product("Pierwsza rzecz", TypProduktu.Usługa,c1);
             products.Add(a1);
             //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            Product a2 = new Product("Druga rzecz", "Produkt", "Komentarz2");
-            Price c2 = new Price(20, "EUR", 8.0f);
-            a2.SetPrice(c2);
+            Price c2 = new Price(20, Waluta.EUR, 8.0f);
+            Product a2 = new Product("Druga rzecz", TypProduktu.Przedmiot, c2);
             products.Add(a2);
             //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            Product a3 = new Product("Trzecia rzecz", "Usługa", "Komentarz3");
-            Price c3 = new Price(100, "USD", 1.0f);
-            a3.SetPrice(c3);
+            Price c3 = new Price(100, Waluta.USD, 1.0f);
+            Product a3 = new Product("Trzecia rzecz", TypProduktu.Usługa, c3);
             products.Add(a3);
             //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            Product a4 = new Product("Druga rzecz", "Produkt", "Komentarz4");
-            Price c4 = new Price(5, "GBD", 20.0f);
-            a4.SetPrice(c4);
+            Price c4 = new Price(5, Waluta.EUR, 20.0f);
+            Product a4 = new Product("Druga rzecz", TypProduktu.Przedmiot, c4);
             products.Add(a4);
             //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         }
@@ -40,19 +36,19 @@ namespace Infrastructure.Repositories
         {
             products.Add(product);
         }
-        public void Delete(string Id)
+        public void Delete(Guid Id)
         {
             foreach (var a in products)
             {
-                if (a.GetId() == Id)
+                if (a.IDProduct == Id)
                     products.Remove(a);
             }
         }
-        public Product Find(string Id)
+        public Product Find(Guid Id)
         {
             foreach (var a in products)
             {
-                if (a.GetId() == Id)
+                if (a.IDProduct == Id)
                     return a;
             }
             return null;
@@ -68,6 +64,23 @@ namespace Infrastructure.Repositories
         public List<Product> FindAll()
         {
             return products;
+        }
+        public void Delete(string name)
+        {
+            foreach (var a in products)
+            {
+                if (a.NameOfProduct == name)
+                    products.Remove(a);
+            }
+        }
+        public Product Find(string name)
+        {
+            foreach (Product a in products)
+            {
+                if (a.NameOfProduct == name)
+                    return a;
+            }
+            return null;
         }
     }
 }

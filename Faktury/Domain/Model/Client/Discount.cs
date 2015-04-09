@@ -10,21 +10,13 @@ namespace Domain.Model.Client
     public enum Bonus { Zniżka, Netto};
     public class Discount
     {
-        public Guid IdProduct
-        {
-            get { return IdProduct; }
-            private set { }
-        }
-        public Bonus Type 
-        { 
-            get { return Type; }
-            private set { }
-        }
+        public Guid IdProduct { get; private set; }
+        public Bonus Type { get; private set; }
         public double ValueOfBonus { get; private set; }
         public Discount(Guid id, Bonus type)
         {
             IdProduct = id;
-            Type = type;
+            Type = Bonus.Netto;
             ValueOfBonus = 0.0f;
         }
         public Discount(Guid id, Bonus type, double bonus) 
@@ -32,11 +24,8 @@ namespace Domain.Model.Client
             if(bonus<0.0f||bonus>=1.0f)
                 throw new Exception("Niewłaściwy bonus.\n");
             IdProduct = id;
-            Type = type;
-            if (Type == Bonus.Zniżka)
-                ValueOfBonus = bonus;
-            else
-                ValueOfBonus = 0.0f;
+            Type = Bonus.Zniżka;
+            ValueOfBonus = bonus;
         }
         public void ChangeType(Bonus type, double bonus ) 
         {

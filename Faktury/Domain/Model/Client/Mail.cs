@@ -33,6 +33,5 @@ namespace Domain.Model.Client
         {
             return Address.ToString();
         }
-
     }
 }

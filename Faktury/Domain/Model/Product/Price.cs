@@ -21,7 +21,7 @@ namespace Domain.Model.Product
                 throw new Exception("Zła wartośc VAT, ustawiono na 0%");
             } 
         }
-        public Price(long val, String waluta, float vat)
+        public Price(long val, Waluta waluta, float vat)
         {
             try
             {

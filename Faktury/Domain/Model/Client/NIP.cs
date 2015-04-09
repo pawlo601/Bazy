@@ -47,6 +47,5 @@ namespace Domain.Model.Client
         {
             return "NIP: " + this.Number;
         }
-
     }
 }

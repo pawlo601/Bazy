@@ -14,25 +14,20 @@ namespace Domain.Model.Product
     public class Currency
     {
         private static List<Curr> ListOfCurrency;
-        private static Currency instance=new Currency();
-        public static Currency GetInstance()
-        {
-            return instance;
-        }
-        private Currency() 
+        public Currency() 
         {
             ListOfCurrency = new List<Curr>();
             Refresh();
         }
-        public double GetExchange(Waluta name)
+        public double GetCourse(Waluta name)
         {
-            double pomocnicza = instance.Find(name);
+            double pomocnicza = Find(name);
             if (pomocnicza == -1.0f)
                 throw new Exception("Nie znaleziono waluty.\n");
             else
                 return pomocnicza;
         }
-        public double Find(Waluta Name)
+        private double Find(Waluta Name)
         {
             foreach ( Curr a in ListOfCurrency)
             {
@@ -47,12 +42,25 @@ namespace Domain.Model.Product
             double xfrom = Find(from);
             double xto = Find(to);
             if (xfrom == -1.0f || xto == -1.0f)
-                throw new Exception("Nie ma informacji to tej walucie.\n");
+                throw new Exception("Nie ma informacji to tych walutach.\n");
             przelicznik = xfrom / xto;
             return przelicznik;
         }
         public void Refresh()
-        {//implementacja potrzebna
+        {
+            Curr dol;
+            dol.Name = Waluta.USD;
+            dol.ExchangeInTheRelationToPLN = 3.0f;
+            ListOfCurrency.Add(dol);
+            Curr eur;
+            eur.Name = Waluta.EUR;
+            eur.ExchangeInTheRelationToPLN = 4.0f;
+            ListOfCurrency.Add(eur);
+            Curr pln;
+            pln.Name = Waluta.PLN;
+            pln.ExchangeInTheRelationToPLN = 1.0f;
+            ListOfCurrency.Add(pln);
+
         }
     }
 }

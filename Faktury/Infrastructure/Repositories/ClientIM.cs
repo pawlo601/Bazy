@@ -13,7 +13,7 @@ namespace Infrastructure.Repositories
         private List<Client> clients = new List<Client>();
         public ClientIM()
         {
-            PersonalData per1 = new PersonalData("A", "B", "C");
+            PersonalData per1 = new PersonalData("A", "B");
             Address ad1 = new Address("S1", "12", "Wrocław", "12-456", "Poland");
             Regon a1 = new Regon("2346789");
             NIP a2 = new NIP("123123");
@@ -23,7 +23,7 @@ namespace Infrastructure.Repositories
         {
             clients.Add(client);
         }
-        public void Delete(string Id)
+        public void Delete(Guid Id)
         {
             foreach(var a in clients)
             {
@@ -33,7 +33,7 @@ namespace Infrastructure.Repositories
                 }
             }
         }
-        public Client FindID(string Id)
+        public Client FindID(Guid Id)
         {
             foreach (var a in clients)
             {
@@ -55,6 +55,17 @@ namespace Infrastructure.Repositories
             }
             return null;
         }
+        public Client FindPD(PersonalData pd)
+        {
+            foreach (var a in clients)
+            {
+                if (pd == a.Data)
+                {
+                    return a;
+                }
+            }
+            return null;
+        }
         public Client FindREGON(Regon regon)
         {
             foreach (var a in clients)
@@ -70,7 +81,7 @@ namespace Infrastructure.Repositories
         {
             return clients;
         }
-        public List<Discount> GetAllDiscount(string IdClient)
+        public List<Discount> GetAllDiscount(Guid IdClient)
         {
             return this.FindID(IdClient).ListOfDiscount;
         }

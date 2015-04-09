@@ -10,7 +10,7 @@ namespace Application
 {
     public interface IProductService
     {
-        void CreateDoc(Product p);
-        Money Exchange(Money pieniadz, String wal);
+        public void CreateDoc(string nameOfProduct);
+        Money Exchange(Money pieniadz, Waluta wal);
     }
 }

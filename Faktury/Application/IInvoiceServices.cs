@@ -11,7 +11,6 @@ namespace Application
     public interface IInvoiceServices 
     {
         void CreateInvoice(Invoice p);
-        void CreateReceipt(Invoice p);
         void SendToMailInvoice(Invoice p);
         void CreateReportMonth(DateTime Month);
         void CreateReport3Month(DateTime Month);

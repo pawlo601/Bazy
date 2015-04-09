@@ -9,11 +9,12 @@ namespace Domain.Model.Client.Repositories
     public interface IClientRepositories
     {
         void Insert(Client client);
-        void Delete(String Id);
+        void Delete(Guid Id);
         Client FindID(Guid Id);
         Client FindNIP(NIP nip);
+        public Client FindPD(PersonalData pd);
         Client FindREGON(Regon regon);
         List<Client> FindAll();
-        List<Discount> GetAllDiscount(String IdClient);
+        List<Discount> GetAllDiscount(Guid IdClient);
     }
 }

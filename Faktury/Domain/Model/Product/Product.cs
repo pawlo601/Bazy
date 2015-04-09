@@ -14,7 +14,6 @@ namespace Domain.Model.Product
         public TypProduktu Type { get; set; }
         public Price PriceOfProduct { get; set; }
         public string Comments { get; private set; }
-
         public Product(string name, TypProduktu type, Price price)
         {
             this.IDProduct = Guid.NewGuid();
