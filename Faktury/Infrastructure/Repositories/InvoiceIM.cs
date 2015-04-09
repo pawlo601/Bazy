@@ -20,50 +20,45 @@ namespace Infrastructure.Repositories
             Regon a1 = new Regon("2346789");
             NIP a2 = new NIP("123123");
             Client b=new Client(per1, ad1, a1, a2);
-            Product a3 = new Product("Pierwsza rzecz", "Usługa", "Komentarz");
-            Price c3 = new Price(10,"PLN",19.0f);
-            a3.SetPrice(c3);
-            Money a4 = new Money(123,"PLN");
-            Item e = new Item(a3,12,a4);
+            Price c3 = new Price(10, Waluta.PLN, 19.0f);
+            Product a3 = new Product("Pierwsza rzecz", TypProduktu.Usługa, c3);
+            Money a4 = new Money(123,Waluta.PLN);
+            Item e = new Item(a3,12);
             List<Item> d = new List<Item>();
             d.Add(e);
-            Invoice a = new Invoice("Faktura", new DateTime(), b, d,"as");
+            Invoice a = new Invoice("Faktura", b);
             invoices.Add(a);
         }
-        public void Insert(Invoice client)
+        public void Insert(Invoice invoice)
         {
-            invoices.Add(client);
+            invoices.Add(invoice);
         }
-
         public void Delete(string Id)
         {
             foreach (var a in invoices)
             {
-                if (Id == a.Contractor.IdClient)
+                if (Id == a.IdInvoice)
                 {
                     invoices.Remove(a);
                 }
             }
         }
-
         public Invoice Find(string Id)
         {
             foreach (var a in invoices)
             {
-                if (Id == a.GetId())
+                if (Id == a.IdInvoice)
                 {
                     return a;
                 }
             }
             return null;
         }
-
         public List<Invoice> FindAll()
         {
             return invoices;
         }
-
-        public List<Invoice> FindAllPerContractor(string idOfContractor)
+        public List<Invoice> FindAllPerContractor(Guid idOfContractor)
         {
             List<Invoice> lista = new List<Invoice>();
             foreach (var a in invoices)
@@ -75,7 +70,18 @@ namespace Infrastructure.Repositories
             }
             return lista;
         }
-
+        public List<Invoice> FindAllPerContractor(PersonalData per)
+        {
+            List<Invoice> lista = new List<Invoice>();
+            foreach (var a in invoices)
+            {
+                if (per == a.Contractor.Data)
+                {
+                    lista.Add(a);
+                }
+            }
+            return lista;
+        }
         public List<Invoice> FindAllPerData(DateTime date)
         {
             List<Invoice> lista = new List<Invoice>();
@@ -88,8 +94,7 @@ namespace Infrastructure.Repositories
             }
             return lista;
         }
-
-        public List<Invoice> FindAllPerProduct(string IDProduct)
+        public List<Invoice> FindAllPerProduct(Guid IDProduct)
         {
             List<Invoice> lista = new List<Invoice>();
             foreach (var a in invoices)
@@ -101,5 +106,18 @@ namespace Infrastructure.Repositories
             }
             return lista;
         }
+        public List<Invoice> FindAllPerProduct(string name)
+        {
+            List<Invoice> lista = new List<Invoice>();
+            foreach (var a in invoices)
+            {
+                if (a.GetItem(name)!=null)
+                {
+                    lista.Add(a);
+                }
+            }
+            return lista;
+        }
+
     }
 }

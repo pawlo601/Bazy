@@ -41,7 +41,7 @@ namespace Domain.Model.Product
         }
         public Money GetGross()
         {
-            return new Money(VAT*NetPrice.Value,NetPrice.NameOfCurrency.ToString());
+            return new Money(VAT*NetPrice.Value,NetPrice.NameOfCurrency);
         }
     }
 }

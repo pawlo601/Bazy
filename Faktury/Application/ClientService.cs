@@ -21,22 +21,22 @@ namespace Application
         {
             repo = re;
         }
-        List<Discount> GetAllDiscount(PersonalData p)
+        public List<Discount> GetAllDiscount(PersonalData p)
         {
             Client a = repo.FindPD(p);
             return a.ListOfDiscount;
         }
-        Mail GetContact(PersonalData p)
+        public Mail GetContactM(PersonalData p)
         {
             Client a = repo.FindPD(p);
             return a.MailToClient;
         }
-        Phone GetContact(PersonalData p)
+        public Phone GetContactP(PersonalData p)
         {
             Client a = repo.FindPD(p);
             return a.NumberOfPhone;
         }
-        void CreateDoc(PersonalData p)
+        public void CreateDoc(PersonalData p)
         {
             Client a = repo.FindPD(p);
             string path = @"c:\bazy\";

@@ -8,12 +8,14 @@ namespace Domain.Model.Invoice.Repositories
 {
     public interface IInvoiceRepositories
     {
-        void Insert(Invoice client);
-        void Delete(String Id);
-        Invoice Find(String Id);
+        void Insert(Invoice invoice);
+        void Delete(string Id);
+        Invoice Find(string Id);
         List<Invoice> FindAll();
-        List<Invoice> FindAllPerContractor(String idOfContractor);
+        List<Invoice> FindAllPerContractor(Guid idOfContractor);
+        List<Invoice> FindAllPerContractor(Client.PersonalData per);
         List<Invoice> FindAllPerData(DateTime date);
-        List<Invoice> FindAllPerProduct(String IDProduct);
+        List<Invoice> FindAllPerProduct(Guid IDProduct);
+        List<Invoice> FindAllPerProduct(string name);
     }
 }

@@ -44,9 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientService.cs" />
     <Compile Include="IClientService.cs" />
     <Compile Include="IInvoiceServices.cs" />
+    <Compile Include="InvoiceService.cs" />
     <Compile Include="IProductService.cs" />
+    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +60,10 @@
     <ProjectReference Include="..\Domain\Finance.Domain.csproj">
       <Project>{482d8ba2-9fb4-4556-83ce-dc91116b46bd}</Project>
       <Name>Finance.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Finance.Infrastructure.csproj">
+      <Project>{f38f0fc0-c878-45d7-8dbd-fd106fbaa230}</Project>
+      <Name>Finance.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

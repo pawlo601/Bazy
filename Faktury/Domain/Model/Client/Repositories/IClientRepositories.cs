@@ -12,7 +12,7 @@ namespace Domain.Model.Client.Repositories
         void Delete(Guid Id);
         Client FindID(Guid Id);
         Client FindNIP(NIP nip);
-        public Client FindPD(PersonalData pd);
+        Client FindPD(PersonalData pd);
         Client FindREGON(Regon regon);
         List<Client> FindAll();
         List<Discount> GetAllDiscount(Guid IdClient);

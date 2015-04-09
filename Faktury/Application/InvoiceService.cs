@@ -21,44 +21,40 @@ namespace Application
         {
             repo = re;
         }
-        public void CreateInvoice(Invoice p)
+        public void CreateInvoice(string id)
+        {
+            Invoice a = repo.Find(id);
+            string path = @"c:\bazy\";
+            path += a.Title + ".txt";
+            if (!File.Exists(path))
+            {
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine(a.ToString());
+                }
+            }
+        }
+        public void SendToMailInvoice(string id)
         {
             throw new NotImplementedException();
         }
-
-        public void SendToMailInvoice(Invoice p)
+        public List<Invoice> GetAllPerClient(Domain.Model.Client.PersonalData pd)
         {
-            throw new NotImplementedException();
+            return repo.FindAllPerContractor(pd);
         }
-
-        public void CreateReportMonth(DateTime Month)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CreateReport3Month(DateTime Month)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CreateReportYear(DateTime Date)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Invoice> GetAllPerClient(Domain.Model.Client.Client p)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Invoice> GetAllPerDate(DateTime p)
         {
-            throw new NotImplementedException();
+            return repo.FindAllPerData(p);
         }
-
         public List<Invoice> GetAllPerDateToDate(DateTime from, DateTime to)
         {
-            throw new NotImplementedException();
+            List<Invoice> a = new List<Invoice>();
+            while(from!=to)
+            {
+                a.AddRange(repo.FindAllPerData(from));
+                from.AddDays(1);
+            }
+            return a;
         }
     }
 }

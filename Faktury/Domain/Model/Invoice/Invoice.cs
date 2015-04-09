@@ -56,6 +56,15 @@ namespace Domain.Model.Invoice
             }
             return null;
         }
+        public Item GetItem(string name)
+        {
+            foreach (Item a in ListOfProducts)
+            {
+                if (a.Thing.NameOfProduct == name)
+                    return a;
+            }
+            return null;
+        }
         public void CalculateDiscount()
         {
             foreach(Item a in ListOfProducts)

@@ -21,7 +21,7 @@ namespace Domain.Model.Client
         {
             return Number;
         }
-        public string ToString()
+        public override string ToString()
         {
             return "Numer: " + Number;
         }
