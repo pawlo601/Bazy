@@ -82,5 +82,9 @@ namespace Infrastructure.Repositories
             }
             return null;
         }
+        public static void Main()
+        {
+
+        }
     }
 }

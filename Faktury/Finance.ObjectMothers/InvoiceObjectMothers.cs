@@ -25,7 +25,7 @@ namespace Finance.ObjectMothers
         public static Invoice CreateInvoiceCompWithDis2Przed()
         {
             Invoice a = new Invoice("Faktura zapłaty", ClientObjectMothers.CreateClientPrivateWithoutDiscount());
-            a.AddProduct(ProductObjectMothers.CreateProductPrzedmiotUSD(), 1);
+            a.AddProduct(ProductObjectMothers.CreateProductPrzedmiotEUR(), 1);
             a.AddProduct(ProductObjectMothers.CreateProductPrzedmiotPLN(), 2);
             return a;
         }
@@ -33,6 +33,11 @@ namespace Finance.ObjectMothers
         {
             Invoice a = new Invoice("Faktura zapłaty2", ClientObjectMothers.CreateClientPrivateWithDiscountNetto());
             a.AddProduct(ProductObjectMothers.CreateProductUslugaPLN(), 2);
+            return a;
+        }
+        public static Item CreateItems123()
+        {
+            Item a = new Item(ProductObjectMothers.CreateProductPrzedmiotEUR(), 123);
             return a;
         }
     }

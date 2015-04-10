@@ -9,26 +9,63 @@ namespace Finance.ObjectMothers
 {
     public class ProductObjectMothers
     {
-        public static Product CreateProductUslugaPLN()
-        {
-            Money mon = new Money(50.0f,Waluta.PLN);
-            Price pr = new Price(mon,0.19f);
-            Product a = new Product("Czyszczenie Laptopa", TypProduktu.Usługa, pr);
-            return a;
-        }
-        public static Product CreateProductPrzedmiotPLN()
+        public static Product CreateProductPrzedmiotPLN( )
         {
             Money mon = new Money(5000.0f, Waluta.PLN);
             Price pr = new Price(mon, 0.19f);
             Product a = new Product("Laptop1", TypProduktu.Przedmiot, pr);
             return a;
         }
-        public static Product CreateProductPrzedmiotUSD()
+        public static Product CreateProductPrzedmiotEUR()
         {
-            Money mon = new Money(1000.0f, Waluta.USD);
+            Money mon = new Money(5000.0f, Waluta.EUR);
             Price pr = new Price(mon, 0.19f);
-            Product a = new Product("Laptop2", TypProduktu.Przedmiot, pr);
+            Product a = new Product("Laptop1", TypProduktu.Przedmiot, pr);
             return a;
+        }
+        public static Product CreateProductUslugaPLN()
+        {
+            Money mon = new Money(5000.0f, Waluta.PLN);
+            Price pr = new Price(mon, 0.19f);
+            Product a = new Product("Laptop1", TypProduktu.Usługa, pr);
+            return a;
+        }
+        public static Product CreateProductUslugaUSD()
+        {
+            Money mon = new Money(5000.0f, Waluta.USD);
+            Price pr = new Price(mon, 0.19f);
+            Product a = new Product("Laptop1", TypProduktu.Usługa, pr);
+            return a;
+        }
+        public static Price CreatePricePLN()
+        {
+            Price pr = new Price(12.04f, Waluta.PLN, 0.20f);
+            return pr;
+        }
+        public static Price CreatePriceUSD()
+        {
+            Price pr = new Price(12.04f, Waluta.USD, 0.20f);
+            return pr;
+        }
+        public static Currency CreateCurrency()
+        {
+            Currency cu = new Currency();
+            return cu;
+        }
+        public static Money CreateMoneyPLN()
+        {
+            Money mon = new Money(123.70f, Waluta.PLN);
+            return mon;
+        }
+        public static Money CreateMoneyUSD()
+        {
+            Money mon = new Money(123.70f, Waluta.USD);
+            return mon;
+        }
+        public static Money CreateMoneyEUR()
+        {
+            Money mon = new Money(123.70f, Waluta.EUR);
+            return mon;
         }
     }
 }

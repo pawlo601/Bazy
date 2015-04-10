@@ -50,8 +50,20 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="ClientTest.cs" />
+    <Compile Include="InvoiceTest.cs" />
+    <Compile Include="ProductTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Finance.Domain.csproj">
+      <Project>{482d8ba2-9fb4-4556-83ce-dc91116b46bd}</Project>
+      <Name>Finance.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Finance.ObjectMothers\Finance.ObjectMothers.csproj">
+      <Project>{9a43b260-cede-497c-b7a4-1bedb3ab4a9a}</Project>
+      <Name>Finance.ObjectMothers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
