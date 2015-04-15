@@ -57,6 +57,7 @@
     <Compile Include="Model\Invoice\Invoice.cs" />
     <Compile Include="Model\Invoice\Item.cs" />
     <Compile Include="Model\Invoice\Repositories\IInvoiceRepositories.cs" />
+    <Compile Include="Model\Product\Curr.cs" />
     <Compile Include="Model\Product\Currency.cs" />
     <Compile Include="Model\Product\Money.cs" />
     <Compile Include="Model\Product\Price.cs" />

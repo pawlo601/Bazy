@@ -9,25 +9,14 @@ namespace Domain.Model.Product
     public enum Waluta {PLN,EUR,USD };
     public class Money
     {
-        public float Value { get; set; }
-        public Waluta NameOfCurrency { get; private set; }
-        private static Currency Curr;
-
-        public float GetValueIn(Waluta waluta)
+        public virtual float Value { get; set; }
+        public virtual Waluta NameOfCurrency { get; set;  }
+        public Currency Curr{get; private set;}
+        public Money()
         {
-            if (waluta == NameOfCurrency)
-                return Value;
-            else
-            {
-                try
-                {
-                    return (float)(Curr.Swap(NameOfCurrency, waluta)) * Value;
-                }
-                catch(Exception e)
-                {
-                    throw e;
-                }
-            }
+            Value = 0.00f;
+            NameOfCurrency = Waluta.PLN;
+            Curr = Currency.GetInstance();
         }
         public Money(float val, Waluta waluta)
         {
@@ -37,12 +26,12 @@ namespace Domain.Model.Product
             else 
             {
                 Value = val;
-                Curr = new Currency();
+                Curr = Currency.GetInstance();
             }
         }
-        public static void RefreshValue()
+        public void RefreshValue()
         {
-            Curr.Refresh();
+            this.Curr.Refresh();
         }
         public void ChengeCurrency(Waluta curr)
         {
@@ -55,6 +44,27 @@ namespace Domain.Model.Product
             {
                 throw e;
             }            
+        }
+        public float GetValueIn(Waluta waluta)
+        {
+            if (waluta == NameOfCurrency)
+                return Value;
+            else
+            {
+                try
+                {
+                    return (float)(Curr.Swap(NameOfCurrency, waluta)) * Value;
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+            }
+        }
+        public override string ToString()
+        {
+            string a = String.Format("{0}{1}", Value, NameOfCurrency);
+            return a;
         }
     }
 }

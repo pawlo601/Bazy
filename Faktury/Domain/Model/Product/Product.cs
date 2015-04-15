@@ -9,25 +9,58 @@ namespace Domain.Model.Product
     public enum TypProduktu { Przedmiot, Usługa};
     public class Product
     {
-        public Guid IDProduct { get; private set; }
-        public string NameOfProduct { get; set; }
-        public TypProduktu Type { get; set; }
-        public Price PriceOfProduct { get; set; }
-        public string Comments { get; private set; }
+        public virtual Guid IDProduct { get; set; }
+        public virtual string NameOfProduct { get; set; }
+        public virtual TypProduktu Type { get; set; }
+        public virtual Price PriceOfProduct { get; set; }
+        private string _comments;
+        public virtual string Comments 
+        { 
+            get 
+            {
+                return this._comments;
+            }
+            set 
+            { 
+                this.SetComments(value); 
+            } 
+        }
+        public Product()
+        {
+            IDProduct = new Guid();
+            NameOfProduct = "Nazwa Produktu";
+            Type = TypProduktu.Przedmiot;
+            PriceOfProduct = new Price();
+            Comments = "Brak komentarza";
+        }
         public Product(string name, TypProduktu type, Price price)
         {
             this.IDProduct = Guid.NewGuid();
             this.NameOfProduct = name;
             this.Type = type;
             this.PriceOfProduct = price;
-            Comments = "";
+            Comments = "Brak komentarza";
         }
         public void SetComments(string comm)
         {
-            if (comm.Length < 250)
-                this.Comments = comm.Substring(0, 250);
+            if (comm.Length > 250)
+                this._comments = comm.Substring(0, 250);
             else
-                this.Comments = comm;
+                this._comments = comm;
+        }
+        public Waluta GetCurrency()
+        {
+            return PriceOfProduct.NetPrice.NameOfCurrency;
+        }
+        public void ChangeCurrency(Waluta a)
+        {
+            PriceOfProduct.ChangeCurrency(a);
+        }
+        public override string ToString()
+        {
+            string a = String.Format("Produkt: {0}{4}{4}Typ: {1}{4}{4}Cena:{4}{2}{4}{4}Komentarz:{4}{3}",
+                                        NameOfProduct, Type, PriceOfProduct.ToString(), Comments, Environment.NewLine);
+            return a;
         }
     }
 }

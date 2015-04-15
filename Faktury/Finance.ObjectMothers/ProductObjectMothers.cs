@@ -49,7 +49,7 @@ namespace Finance.ObjectMothers
         }
         public static Currency CreateCurrency()
         {
-            Currency cu = new Currency();
+            Currency cu = Currency.GetInstance();
             return cu;
         }
         public static Money CreateMoneyPLN()

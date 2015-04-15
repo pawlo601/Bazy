@@ -42,5 +42,10 @@ namespace Application
             a.ChengeCurrency(wal);
             return a;
         }
+        public List<Curr> GetCurrency()
+        {
+            Money a = new Money();
+            return a.Curr.ListOfCurrency;
+        }
     }
 }

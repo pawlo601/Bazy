@@ -11,7 +11,7 @@ namespace Infrastructure.Repositories
     public class ProductIM : IProductRepositories
     {
         private List<Product> products=new List<Product>();
-        private List<Curr> curr;
+        private List<Curr> curr=new List<Curr>();
 
         public ProductIM()
         {

@@ -9,6 +9,7 @@ namespace Application
 {
     public interface IClientService
     {
+        List<Client> GetAll();
         List<Discount> GetAllDiscount(PersonalData p);
         Phone GetContactP(PersonalData p);
         Mail GetContactM(PersonalData p);

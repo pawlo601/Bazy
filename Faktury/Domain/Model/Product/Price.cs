@@ -8,8 +8,13 @@ namespace Domain.Model.Product
 {
     public class Price
     {
-        public Money NetPrice { get; private set; }
-        public float VAT { get; set; }
+        public virtual Money NetPrice { get; set; }
+        public virtual float VAT { get; set; }
+        public Price()
+        {
+            NetPrice = new Money();
+            VAT = 0.19f;
+        }
         public Price(Money a, float vat)
         {
             NetPrice = a;
@@ -42,6 +47,17 @@ namespace Domain.Model.Product
         public Money GetGross()
         {
             return new Money(VAT*NetPrice.Value,NetPrice.NameOfCurrency);
+        }
+        public void ChangeCurrency(Waluta nowa)
+        {
+            Money a = new Money(NetPrice.GetValueIn(nowa),nowa);
+            NetPrice = a;
+        }
+        public override string ToString()
+        {
+            string a = String.Format("Cena netto :{0}{3}Cena brutto :{1}{3}Vat: {2}",
+                                    NetPrice.ToString(), this.GetGross().ToString(), VAT, Environment.NewLine);
+            return a;
         }
     }
 }

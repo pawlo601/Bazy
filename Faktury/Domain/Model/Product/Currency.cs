@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Product
 {
-    public struct Curr
-    {
-        public Waluta Name;
-        public double ExchangeInTheRelationToPLN;//X PLN=1 Waluta
-    }
     public class Currency
     {
-        private static List<Curr> ListOfCurrency;
-        public Currency() 
+        public virtual List<Curr> ListOfCurrency { get; private set; }
+        private static Currency instance = new Currency();
+        public static Currency GetInstance()
         {
-            ListOfCurrency = new List<Curr>();
+            return instance;
+        }
+        private Currency() 
+        {
             Refresh();
         }
         public double GetCourse(Waluta name)
@@ -47,20 +46,24 @@ namespace Domain.Model.Product
             return przelicznik;
         }
         public void Refresh()
-        {
-            Curr dol;
+        {//from Internet
+            this.GetCurrencyFromDataBase(new List<Curr>());
+            Curr dol=new Curr();
             dol.Name = Waluta.USD;
             dol.ExchangeInTheRelationToPLN = 3.0f;
             ListOfCurrency.Add(dol);
-            Curr eur;
+            Curr eur=new Curr();
             eur.Name = Waluta.EUR;
             eur.ExchangeInTheRelationToPLN = 4.0f;
             ListOfCurrency.Add(eur);
-            Curr pln;
+            Curr pln=new Curr();
             pln.Name = Waluta.PLN;
             pln.ExchangeInTheRelationToPLN = 1.0f;
             ListOfCurrency.Add(pln);
-
+        }
+        public void GetCurrencyFromDataBase(List<Curr> a)
+        {
+            ListOfCurrency=a;
         }
     }
 }

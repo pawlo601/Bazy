@@ -21,6 +21,10 @@ namespace Application
         {
             repo = re;
         }
+        public List<Client> GetAll()
+        {
+            return repo.FindAll();
+        }
         public List<Discount> GetAllDiscount(PersonalData p)
         {
             Client a = repo.FindPD(p);
