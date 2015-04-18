@@ -16,6 +16,7 @@ namespace Domain.Model.Client
         public Phone NumberOfPhone { get; set; }
         public Mail MailToClient { get; set; }
         public List<Discount> ListOfDiscount { get; private set; }
+
         public Client(PersonalData name, Address lok)
         {
             if (!name.Type.Equals(Typ.KlientPrywatny))

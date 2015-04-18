@@ -9,10 +9,18 @@ namespace Domain.Model.Client
     public enum Typ { Firma, KlientPrywatny };
     public class PersonalData
     {
-        public string Name { get; set; }
-        public string SurName { get; set; }
-        public string NameOfCompany { get; set; }
-        public Typ Type { get; private set; }
+        public virtual string Name { get; set; }
+        public virtual string SurName { get; set; }
+        public virtual string NameOfCompany { get; set; }
+        public virtual Typ Type { get; private set; }
+
+        public PersonalData()
+        {
+            Name = "-";
+            SurName = "-";
+            NameOfCompany = "Nazwa firmy";
+            Type = Typ.Firma;
+        }
         public PersonalData(string com)
         {
             Name = "-";

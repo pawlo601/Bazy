@@ -11,7 +11,7 @@ namespace Infrastructure.Repositories
     public class ProductIM : IProductRepositories
     {
         private List<Product> products=new List<Product>();
-        private List<Curr> curr=new List<Curr>();
+        private List<Currency> curr=new List<Currency>();
 
         public ProductIM()
         {
@@ -36,7 +36,7 @@ namespace Infrastructure.Repositories
         {
             products.Add(product);
         }
-        public void Delete(Guid Id)
+        public void Delete(int Id)
         {
             foreach (var a in products)
             {
@@ -44,7 +44,7 @@ namespace Infrastructure.Repositories
                     products.Remove(a);
             }
         }
-        public Product Find(Guid Id)
+        public Product Find(int Id)
         {
             foreach (var a in products)
             {
@@ -53,11 +53,11 @@ namespace Infrastructure.Repositories
             }
             return null;
         }
-        public List<Curr> GetCurrency()
+        public List<Currency> FindAllCurrency()
         {
             return curr;
         }
-        public void SaveCurrency(List<Curr> list)
+        public void SaveCurrency(List<Currency> list)
         {
             curr = list;
         }
@@ -82,9 +82,9 @@ namespace Infrastructure.Repositories
             }
             return null;
         }
-        public static void Main()
+        public void Insert(Currency cuurr)
         {
-
+            curr.Add(cuurr);
         }
     }
 }

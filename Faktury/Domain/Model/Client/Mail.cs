@@ -9,7 +9,7 @@ namespace Domain.Model.Client
 {
     public class Mail 
     {
-        private MailAddress Address;
+        public virtual MailAddress Address { get; private set; }
         public Mail()
         {
             Address = new MailAddress("Przykładowy@Adres.com");

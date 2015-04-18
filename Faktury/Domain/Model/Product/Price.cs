@@ -55,7 +55,7 @@ namespace Domain.Model.Product
         }
         public override string ToString()
         {
-            string a = String.Format("Cena netto :{0}{3}Cena brutto :{1}{3}Vat: {2}",
+            string a = String.Format("Cena netto :{0}{3}Cena brutto :{1}{3}Vat: {2}%",
                                     NetPrice.ToString(), this.GetGross().ToString(), VAT, Environment.NewLine);
             return a;
         }

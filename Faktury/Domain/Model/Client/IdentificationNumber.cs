@@ -8,7 +8,7 @@ namespace Domain.Model.Client
 {
     public abstract class IdentificationNumber
     {
-        protected string Number;
+        protected virtual string Number { get; set; }
         public IdentificationNumber()
         {
             Number = "Przykładowy";

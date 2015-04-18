@@ -9,13 +9,12 @@ namespace Domain.Model.Product
     public enum TypProduktu { Przedmiot, Usługa};
     public class Product
     {
-        public virtual Guid IDProduct { get; set; }
+        public virtual int IDProduct { get; set; }
         public virtual string NameOfProduct { get; set; }
         public virtual TypProduktu Type { get; set; }
         public virtual Price PriceOfProduct { get; set; }
-        private string _comments;
-        public virtual string Comments 
-        { 
+        public virtual string Comments { get; set; }
+        /*{ 
             get 
             {
                 return this._comments;
@@ -24,10 +23,10 @@ namespace Domain.Model.Product
             { 
                 this.SetComments(value); 
             } 
-        }
+        }*/
         public Product()
         {
-            IDProduct = new Guid();
+            IDProduct = -1;
             NameOfProduct = "Nazwa Produktu";
             Type = TypProduktu.Przedmiot;
             PriceOfProduct = new Price();
@@ -35,19 +34,19 @@ namespace Domain.Model.Product
         }
         public Product(string name, TypProduktu type, Price price)
         {
-            this.IDProduct = Guid.NewGuid();
+            this.IDProduct = -1;
             this.NameOfProduct = name;
             this.Type = type;
             this.PriceOfProduct = price;
             Comments = "Brak komentarza";
         }
-        public void SetComments(string comm)
+       /* public void SetComments(string comm)
         {
             if (comm.Length > 250)
                 this._comments = comm.Substring(0, 250);
             else
                 this._comments = comm;
-        }
+        }*/
         public Waluta GetCurrency()
         {
             return PriceOfProduct.NetPrice.NameOfCurrency;

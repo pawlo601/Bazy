@@ -94,7 +94,7 @@ namespace Infrastructure.Repositories
             }
             return lista;
         }
-        public List<Invoice> FindAllPerProduct(Guid IDProduct)
+        public List<Invoice> FindAllPerProduct(int IDProduct)
         {
             List<Invoice> lista = new List<Invoice>();
             foreach (var a in invoices)

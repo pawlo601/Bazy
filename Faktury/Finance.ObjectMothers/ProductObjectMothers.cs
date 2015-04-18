@@ -47,9 +47,9 @@ namespace Finance.ObjectMothers
             Price pr = new Price(12.04f, Waluta.USD, 0.20f);
             return pr;
         }
-        public static Currency CreateCurrency()
+        public static Currencies CreateCurrency()
         {
-            Currency cu = Currency.GetInstance();
+            Currencies cu = Currencies.GetInstance();
             return cu;
         }
         public static Money CreateMoneyPLN()

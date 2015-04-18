@@ -6,3 +6,10 @@ C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Domain.dll
 C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Domain.pdb
 C:\Documents\Bazy\Faktury\Infrastructure\obj\Debug\Infrastructure.exe
 C:\Documents\Bazy\Faktury\Infrastructure\obj\Debug\Infrastructure.pdb
+C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\hibernate.cfg.xml
+C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Iesi.Collections.dll
+C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\NHibernate.dll
+C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Iesi.Collections.xml
+C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\NHibernate.xml
+C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Mapping\Product\Product.hbm.xml
+C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Mapping\Currency\Currency.hbm.xml

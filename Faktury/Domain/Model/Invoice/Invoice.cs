@@ -47,7 +47,7 @@ namespace Domain.Model.Invoice
         {
             ListOfProducts.Add(new Item(product, volume));
         }
-        public Item GetItem(Guid IdProduct)
+        public Item GetItem(int IdProduct)
         {
             foreach(Item a in ListOfProducts)
             {

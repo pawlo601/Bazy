@@ -12,6 +12,6 @@ namespace Application
     {
         void CreateDoc(string nameOfProduct);
         Money Exchange(Money pieniadz, Waluta wal);
-        List<Curr> GetCurrency();
+        List<Currency> GetCurrency();
     }
 }

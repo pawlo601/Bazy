@@ -8,11 +8,12 @@ namespace Domain.Model.Client
 {
     public class Address
     {
-        public string Street { get; set; }
-        public string NumberOfBuilding { get; set; }
-        public string City { get; set; }
-        public string Code { get; set; }
-        public string Country { get; set; }
+        public virtual string Street { get; set; }
+        public virtual string NumberOfBuilding { get; set; }
+        public virtual string City { get; set; }
+        public virtual string Code { get; set; }
+        public virtual string Country { get; set; }
+
         public Address()
         {
             Street = "Ulica";
@@ -36,7 +37,6 @@ namespace Domain.Model.Client
             return "Ulica: " + Street + " " + NumberOfBuilding + "\n" +
                     "Miejscowość: " + City + " " + Code + "\n" +
                     "Państwo: " + Country + "\n";
-                    
         }
 
     }

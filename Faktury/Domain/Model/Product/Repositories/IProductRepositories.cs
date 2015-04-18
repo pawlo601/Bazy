@@ -8,12 +8,13 @@ namespace Domain.Model.Product.Repositories
 {
     public interface IProductRepositories
     {
-        void Insert(Product client);
-        void Delete(Guid Id);
-        Product Find(Guid Id);
+        void Insert(Product product);
+        void Insert(Currency cuurr);
+        void Delete(int Id);
+        Product Find(int Id);
         void Delete(string name);
         Product Find(string name);
-        List<Curr> GetCurrency();
+        List<Currency> FindAllCurrency();
         List<Product> FindAll();
     }
 }

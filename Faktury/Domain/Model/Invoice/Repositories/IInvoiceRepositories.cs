@@ -15,7 +15,7 @@ namespace Domain.Model.Invoice.Repositories
         List<Invoice> FindAllPerContractor(Guid idOfContractor);
         List<Invoice> FindAllPerContractor(Client.PersonalData per);
         List<Invoice> FindAllPerData(DateTime date);
-        List<Invoice> FindAllPerProduct(Guid IDProduct);
+        List<Invoice> FindAllPerProduct(int IDProduct);
         List<Invoice> FindAllPerProduct(string name);
     }
 }

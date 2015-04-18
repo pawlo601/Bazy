@@ -11,12 +11,12 @@ namespace Domain.Model.Product
     {
         public virtual float Value { get; set; }
         public virtual Waluta NameOfCurrency { get; set;  }
-        public Currency Curr{get; private set;}
+        public Currencies Curr{get; private set;}
         public Money()
         {
             Value = 0.00f;
             NameOfCurrency = Waluta.PLN;
-            Curr = Currency.GetInstance();
+            Curr = Currencies.GetInstance();
         }
         public Money(float val, Waluta waluta)
         {
@@ -26,7 +26,7 @@ namespace Domain.Model.Product
             else 
             {
                 Value = val;
-                Curr = Currency.GetInstance();
+                Curr = Currencies.GetInstance();
             }
         }
         public void RefreshValue()
