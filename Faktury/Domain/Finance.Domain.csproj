@@ -47,7 +47,6 @@
     <Compile Include="Model\Client\Address.cs" />
     <Compile Include="Model\Client\Client.cs" />
     <Compile Include="Model\Client\Discount.cs" />
-    <Compile Include="Model\Client\IdentificationNumber.cs" />
     <Compile Include="Model\Client\Mail.cs" />
     <Compile Include="Model\Client\NIP.cs" />
     <Compile Include="Model\Client\PersonalData.cs" />

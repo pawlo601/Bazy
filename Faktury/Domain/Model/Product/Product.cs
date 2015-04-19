@@ -13,8 +13,9 @@ namespace Domain.Model.Product
         public virtual string NameOfProduct { get; set; }
         public virtual TypProduktu Type { get; set; }
         public virtual Price PriceOfProduct { get; set; }
-        public virtual string Comments { get; set; }
-        /*{ 
+        private string _comments;
+        public virtual string Comments 
+        { 
             get 
             {
                 return this._comments;
@@ -23,7 +24,7 @@ namespace Domain.Model.Product
             { 
                 this.SetComments(value); 
             } 
-        }*/
+        }
         public Product()
         {
             IDProduct = -1;
@@ -40,13 +41,13 @@ namespace Domain.Model.Product
             this.PriceOfProduct = price;
             Comments = "Brak komentarza";
         }
-       /* public void SetComments(string comm)
+        public void SetComments(string comm)
         {
             if (comm.Length > 250)
                 this._comments = comm.Substring(0, 250);
             else
                 this._comments = comm;
-        }*/
+        }
         public Waluta GetCurrency()
         {
             return PriceOfProduct.NetPrice.NameOfCurrency;

@@ -9,16 +9,19 @@ namespace Domain.Model.Client
 {
     public class Mail 
     {
-        public virtual MailAddress Address { get; private set; }
+        public virtual string MailClient { get; set; }
+        private MailAddress Address;
         public Mail()
         {
-            Address = new MailAddress("Przykładowy@Adres.com");
+            MailClient = "Przykładowy@Adres.com";
+            Address = new MailAddress(MailClient);
         }
         public Mail(string name, string host)
         {
             try
             {
-                Address = new MailAddress(name + "@" + host);
+                MailClient = name + "@" + host;
+                Address = new MailAddress(MailClient);
             }
             catch(Exception e)
             {
@@ -27,11 +30,11 @@ namespace Domain.Model.Client
         }
         public override string ToString()
         {
-            return "Mail: " + Address.ToString();
+            return "Mail: " + MailClient;
         }
         public string GetString()
         {
-            return Address.ToString();
+            return MailClient;
         }
     }
 }

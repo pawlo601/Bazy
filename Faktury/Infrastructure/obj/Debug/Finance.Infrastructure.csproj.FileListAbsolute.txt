@@ -13,3 +13,6 @@ C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Iesi.Collections.xml
 C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\NHibernate.xml
 C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Mapping\Product\Product.hbm.xml
 C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Mapping\Currency\Currency.hbm.xml
+C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Mapping\Client\Client.hbm.xml
+C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Mapping\Client\Address.hbm.xml
+C:\Documents\Bazy\Faktury\Infrastructure\bin\Debug\Mapping\Client\Discount.hbm.xml

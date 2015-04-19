@@ -8,15 +8,26 @@ namespace Domain.Model.Client
 {
     public class Client
     {
-        public Guid IdClient { get; private set; }
-        public PersonalData Data { get; set; }
-        public Address Localisation { get; set; }
-        public Regon Regon { get; private set; }
-        public NIP Nip { get; private set; }
-        public Phone NumberOfPhone { get; set; }
-        public Mail MailToClient { get; set; }
-        public List<Discount> ListOfDiscount { get; private set; }
+        public virtual int IdClient { get; set; }
+        public virtual PersonalData Data { get; set; }
+        public virtual Address Localisation { get; set; }
+        public virtual Regon Regon { get; set; }
+        public virtual NIP Nip { get; set; }
+        public virtual Phone NumberOfPhone { get; set; }
+        public virtual Mail MailToClient { get; set; }
+        public virtual List<Discount> ListOfDiscount { get; set; }
 
+        public Client()
+        {
+            IdClient = -1;
+            Data = new PersonalData();
+            Localisation = new Address();
+            Regon = new Regon();
+            Nip = new NIP();
+            NumberOfPhone = new Phone();
+            MailToClient = new Mail();
+            ListOfDiscount = new List<Discount>();
+        }
         public Client(PersonalData name, Address lok)
         {
             if (!name.Type.Equals(Typ.KlientPrywatny))
@@ -33,28 +44,35 @@ namespace Domain.Model.Client
         }
         private void ClientCreate(PersonalData name, Address lok)
         {
-            IdClient = Guid.NewGuid();
+            IdClient = -1;
             Data = name;
             Localisation = lok;
             Regon = null;
             Nip = null;
             ListOfDiscount = new List<Discount>();
         }
-        public void AddDiscount(Discount dis)
+        public virtual void AddDiscount(Discount dis)
         {
             ListOfDiscount.Add(dis);
         }
-        public void ChangeTypeToCompany(Regon reg, NIP nip)
+        public virtual void ChangeTypeToCompany(Regon reg, NIP nip)
         {
             Data.ChangeToCompany(this.Data.NameOfCompany);
             Regon = reg;
             Nip = nip;
         }
-        public void ChangeTypeToPrivPer()
+        public virtual void ChangeTypeToPrivPer()
         {
             Data.ChangeToPrivate(this.Data.Name,this.Data.SurName);
             Regon = null;
             Nip = null;
+        }
+        public override string ToString()
+        {
+            string a = IdClient.ToString();
+            foreach (Discount b in ListOfDiscount)
+                a += b.ToString();
+            return a;
         }
     }
 }

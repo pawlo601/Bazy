@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Client
 {
-    public class Phone : IdentificationNumber
+    public class Phone 
     {
-        public virtual string Prefix { get; set; }
+        private string Number;
+        private string Prefix;
+        public virtual string NumberPhone { get; set; }
         public Phone()
         {
             Prefix = "+48";
             Number = "123456789";
+            NumberPhone = Prefix + Number;
         }
         public Phone(string prefix, string number)
         {
@@ -24,17 +27,14 @@ namespace Domain.Model.Client
                         throw new Exception("Błąd w numerze.Niewłaściwe znaki.\n");
                 this.Number = number;
                 this.Prefix = prefix;
+                NumberPhone = Prefix + Number;
             }
             else
                 throw new Exception("Zła długość numeru.\n");
         }
-        public override string GetNumber()
-        {
-            return Prefix + base.GetNumber();
-        }
         public override string ToString()
         {
-            return string.Format("NUmer telefonu: ({0}) {1}-{2}-{3}", 
+            return string.Format("Numer telefonu: ({0}) {1}-{2}-{3}", 
                 Prefix, 
                 this.Number.Substring(0, 3), 
                 this.Number.Substring(3, 3), 

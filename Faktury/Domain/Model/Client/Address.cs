@@ -8,6 +8,7 @@ namespace Domain.Model.Client
 {
     public class Address
     {
+        public virtual int IDAdres { get; set; }
         public virtual string Street { get; set; }
         public virtual string NumberOfBuilding { get; set; }
         public virtual string City { get; set; }
@@ -16,6 +17,7 @@ namespace Domain.Model.Client
 
         public Address()
         {
+            IDAdres = -1;
             Street = "Ulica";
             NumberOfBuilding = "Numer";
             City = "Miasto";

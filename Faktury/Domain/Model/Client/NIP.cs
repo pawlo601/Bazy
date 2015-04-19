@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Client
 {
-    public class NIP : IdentificationNumber
+    public class NIP 
     {
+        public virtual string NumberNIP { get; set; }
         public NIP()
         {
-            this.Number = "0000000000";
+            this.NumberNIP = "0000000000";
         }
         public NIP(string number)
         {
@@ -34,18 +35,14 @@ namespace Domain.Model.Client
                     7 * numbers[8];
                 sum %= 11;
                 if (sum == numbers[9])
-                    this.Number = number;
+                    this.NumberNIP = number;
                 else
                     throw new Exception("Błąd w NIP-ie. Niepoprawne znaczenie.\n");
             }
         }
-        public override string GetNumber()
-        {
-            return base.GetNumber();
-        }
         public override string ToString()
         {
-            return "NIP: " + this.Number;
+            return "NIP: " + this.NumberNIP;
         }
     }
 }

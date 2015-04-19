@@ -58,7 +58,7 @@ namespace Infrastructure.Repositories
         {
             return invoices;
         }
-        public List<Invoice> FindAllPerContractor(Guid idOfContractor)
+        public List<Invoice> FindAllPerContractor(int idOfContractor)
         {
             List<Invoice> lista = new List<Invoice>();
             foreach (var a in invoices)

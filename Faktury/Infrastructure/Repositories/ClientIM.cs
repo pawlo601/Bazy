@@ -23,7 +23,7 @@ namespace Infrastructure.Repositories
         {
             clients.Add(client);
         }
-        public void Delete(Guid Id)
+        public void Delete(int Id)
         {
             foreach(var a in clients)
             {
@@ -33,7 +33,7 @@ namespace Infrastructure.Repositories
                 }
             }
         }
-        public Client FindID(Guid Id)
+        public Client FindID(int Id)
         {
             foreach (var a in clients)
             {
@@ -81,7 +81,7 @@ namespace Infrastructure.Repositories
         {
             return clients;
         }
-        public List<Discount> GetAllDiscount(Guid IdClient)
+        public List<Discount> GetAllDiscount(int IdClient)
         {
             return this.FindID(IdClient).ListOfDiscount;
         }

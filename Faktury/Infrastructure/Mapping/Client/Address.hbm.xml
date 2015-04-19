@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="Domain.Model.Client" assembly="Domain">
+  <class name="Address" table="Localisation">
+    <id name="IDAdres">
+      <generator class="native" />
+    </id>
+    <property name="Street"/>
+    <property name="NumberOfBuilding"/>
+    <property name="City"/>
+    <property name="Code"/>
+    <property name="Country"/>
+  </class>  
+</hibernate-mapping>

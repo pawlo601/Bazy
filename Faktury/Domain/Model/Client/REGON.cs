@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Client
 {
-    public class Regon : IdentificationNumber
+    public class Regon
     {
+        public virtual string NumberRegon { get; set; }
         public Regon()
         {
-            Number = "12345678512347";
+            NumberRegon = "12345678512347";
         }
         public Regon(string number)
         {
             try
             {
                 if (number.Length == 9 && Regon9Znakowy(number))
-                    this.Number = number;
+                    this.NumberRegon = number;
                 else if (number.Length == 14 && Regon14Zankowy(number))
-                    this.Number = number;
+                    this.NumberRegon = number;
                 else
                     throw new Exception("Błąd w Regonie-ie.\n");
             }
@@ -76,13 +77,9 @@ namespace Domain.Model.Client
             else
                 throw new Exception("Błąd w Regonie-ie. Błędne znaczenie\n");
         }
-        public override string GetNumber()
-        {
-            return base.GetNumber();
-        }
         public override string ToString()
         {
-            return "Regon: " + this.Number;
+            return "Regon: " + this.NumberRegon;
         }
     }
 }

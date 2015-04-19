@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="Domain.Model.Client" assembly="Domain">
+  <class name="Client" table="Client">
+    <id name="IdClient" type="int" column="IdClient">
+      <generator class="native" />
+    </id>
+    <component name="Data" class="PersonalData">
+      <property name="Name"/>
+      <property name="SurName"/>
+      <property name="NameOfCompany"/>
+      <property type="Infrastructure.Mapping.TypType, Infrastructure" name="Type" column="Type" />
+    </component>
+    <component name="Nip" class="NIP">
+      <property name="NumberNIP"/>
+    </component>
+    <component name="Regon" class="Regon">
+      <property name="NumberRegon"/>
+    </component>
+    <many-to-one name="Localisation" class="Address" column="ClientAddress" cascade="all" unique="true"/>
+    <component name="NumberOfPhone" class="Phone">
+      <property name="NumberPhone"/>
+    </component>
+    <component name="MailToClient" class="Mail">
+      <property name="MailClient"/>
+    </component>
+
+  </class>
+</hibernate-mapping>
+
+

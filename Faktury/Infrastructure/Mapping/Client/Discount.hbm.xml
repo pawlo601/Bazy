@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="Domain.Model.Client" assembly="Domain">
+  <class name="Discount">
+    <id name="IdDiscount">
+      <generator class="native" />
+    </id>
+    <property name="IdClient"/>
+    <property name="IdProduct"/>
+    <property type="Infrastructure.Mapping.BonusType, Infrastructure" name="Type"/>
+    <property name="ValueOfBonus" />
+  </class>
+</hibernate-mapping>

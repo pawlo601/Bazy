@@ -12,7 +12,7 @@ namespace Domain.Model.Invoice.Repositories
         void Delete(string Id);
         Invoice Find(string Id);
         List<Invoice> FindAll();
-        List<Invoice> FindAllPerContractor(Guid idOfContractor);
+        List<Invoice> FindAllPerContractor(int idOfContractor);
         List<Invoice> FindAllPerContractor(Client.PersonalData per);
         List<Invoice> FindAllPerData(DateTime date);
         List<Invoice> FindAllPerProduct(int IDProduct);

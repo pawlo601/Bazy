@@ -8,5 +8,8 @@
 		<property name="dialect">NHibernate.Dialect.MsSql2008Dialect</property>
 		<mapping file="C:\Documents\Bazy\Faktury\Infrastructure\Mapping\Currency\Currency.hbm.xml" />
     <mapping file="C:\Documents\Bazy\Faktury\Infrastructure\Mapping\Product\Product.hbm.xml" />
+    <mapping file="C:\Documents\Bazy\Faktury\Infrastructure\Mapping\Client\Client.hbm.xml" />
+    <mapping file="C:\Documents\Bazy\Faktury\Infrastructure\Mapping\Client\Discount.hbm.xml" />
+    <mapping file="C:\Documents\Bazy\Faktury\Infrastructure\Mapping\Client\Address.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

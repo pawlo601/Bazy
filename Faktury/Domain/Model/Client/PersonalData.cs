@@ -12,7 +12,7 @@ namespace Domain.Model.Client
         public virtual string Name { get; set; }
         public virtual string SurName { get; set; }
         public virtual string NameOfCompany { get; set; }
-        public virtual Typ Type { get; private set; }
+        public virtual Typ Type { get; set; }
 
         public PersonalData()
         {

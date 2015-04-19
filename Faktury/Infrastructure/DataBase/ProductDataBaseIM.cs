@@ -16,6 +16,10 @@ namespace Infrastructure.DataBase
 {
     public class ProductDataBaseIM:IProductRepositories
     {
+        static ISession OpenSession()
+        {
+            return new Configuration().Configure().BuildSessionFactory().OpenSession();
+        }
         public void Insert(Product product)
         {
             using (ISession s = OpenSession())
@@ -88,21 +92,7 @@ namespace Infrastructure.DataBase
             }
             return result2;
         }
-        static ISession OpenSession()
-        {
-            return new Configuration().Configure().BuildSessionFactory().OpenSession();
-        }
-        public static void Main()
-        {
-            ProductDataBaseIM a = new ProductDataBaseIM();
-            Product j1 = new Product();
-            a.Insert(j1);
-            List<Product> b = a.FindAll();
-            Console.WriteLine("Znaleziono: {0}\n", b.Count);
-            foreach (Product c in b)
-                Console.WriteLine("{0}\n",c.ToString());
-            
-            Console.ReadKey();
-        }
+        
+        
     }
 }
