@@ -11,7 +11,7 @@ namespace Domain.Model.Product
     {
         public virtual float Value { get; set; }
         public virtual Waluta NameOfCurrency { get; set;  }
-        public Currencies Curr{get; private set;}
+        public Currencies Curr;
         public Money()
         {
             Value = 0.00f;

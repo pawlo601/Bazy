@@ -3,3 +3,7 @@ C:\Documents\Bazy\Faktury\Domain\bin\Debug\Domain.dll
 C:\Documents\Bazy\Faktury\Domain\bin\Debug\Domain.pdb
 C:\Documents\Bazy\Faktury\Domain\obj\Debug\Domain.dll
 C:\Documents\Bazy\Faktury\Domain\obj\Debug\Domain.pdb
+C:\Documents\Bazy\Faktury\Domain\bin\Debug\Iesi.Collections.dll
+C:\Documents\Bazy\Faktury\Domain\bin\Debug\NHibernate.dll
+C:\Documents\Bazy\Faktury\Domain\bin\Debug\Iesi.Collections.xml
+C:\Documents\Bazy\Faktury\Domain\bin\Debug\NHibernate.xml

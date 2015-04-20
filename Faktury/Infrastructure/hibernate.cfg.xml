@@ -9,7 +9,7 @@
 		<mapping file="C:\Documents\Bazy\Faktury\Infrastructure\Mapping\Currency\Currency.hbm.xml" />
     <mapping file="C:\Documents\Bazy\Faktury\Infrastructure\Mapping\Product\Product.hbm.xml" />
     <mapping file="C:\Documents\Bazy\Faktury\Infrastructure\Mapping\Client\Client.hbm.xml" />
-    <mapping file="C:\Documents\Bazy\Faktury\Infrastructure\Mapping\Client\Discount.hbm.xml" />
     <mapping file="C:\Documents\Bazy\Faktury\Infrastructure\Mapping\Client\Address.hbm.xml" />
+    <mapping file="C:\Documents\Bazy\Faktury\Infrastructure\Mapping\Invoice\Invoice.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

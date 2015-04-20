@@ -3,7 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Iesi.Collections;
+using Iesi.Collections.Generic;
+/*
+ create table ListOfDiscount
+(
+	ID_Client int,
+	IdClient int,
+	IdProduct int,
+	ValueOfBonus float,
+	Type varchar(10)
+)
+go
+ */
 namespace Domain.Model.Client
 {
     public class Client
@@ -15,7 +27,7 @@ namespace Domain.Model.Client
         public virtual NIP Nip { get; set; }
         public virtual Phone NumberOfPhone { get; set; }
         public virtual Mail MailToClient { get; set; }
-        public virtual List<Discount> ListOfDiscount { get; set; }
+        public virtual Iesi.Collections.Generic.ISet<Discount> ListOfDiscount { get; set; }
 
         public Client()
         {
@@ -26,7 +38,7 @@ namespace Domain.Model.Client
             Nip = new NIP();
             NumberOfPhone = new Phone();
             MailToClient = new Mail();
-            ListOfDiscount = new List<Discount>();
+            ListOfDiscount = new HashedSet<Discount>();
         }
         public Client(PersonalData name, Address lok)
         {
@@ -49,7 +61,7 @@ namespace Domain.Model.Client
             Localisation = lok;
             Regon = null;
             Nip = null;
-            ListOfDiscount = new List<Discount>();
+            ListOfDiscount = new HashedSet<Discount>();
         }
         public virtual void AddDiscount(Discount dis)
         {
@@ -69,9 +81,9 @@ namespace Domain.Model.Client
         }
         public override string ToString()
         {
-            string a = IdClient.ToString();
+            string a = IdClient.ToString()+"\n";
             foreach (Discount b in ListOfDiscount)
-                a += b.ToString();
+                a += b.ToString()+"\n";
             return a;
         }
     }

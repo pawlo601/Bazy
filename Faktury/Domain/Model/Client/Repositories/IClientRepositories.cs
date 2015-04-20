@@ -15,6 +15,6 @@ namespace Domain.Model.Client.Repositories
         Client FindPD(PersonalData pd);
         Client FindREGON(Regon regon);
         List<Client> FindAll();
-        List<Discount> GetAllDiscount(int IdClient);
+        ISet<Discount> GetAllDiscount(int IdClient);
     }
 }

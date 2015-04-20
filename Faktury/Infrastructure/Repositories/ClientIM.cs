@@ -1,16 +1,16 @@
 ﻿using Domain.Model.Client;
 using Domain.Model.Client.Repositories;
 using System;
-using System.Collections.Generic;
+using Iesi.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class ClientIM : IClientRepositories
+    public class ClientIM 
     {
-        private List<Client> clients = new List<Client>();
+        private System.Collections.Generic.List<Client> clients = new System.Collections.Generic.List<Client>();
         public ClientIM()
         {
             PersonalData per1 = new PersonalData("A", "B");
@@ -77,11 +77,11 @@ namespace Infrastructure.Repositories
             }
             return null;
         }
-        public List<Client> FindAll()
+        public System.Collections.Generic.List<Client> FindAll()
         {
             return clients;
         }
-        public List<Discount> GetAllDiscount(int IdClient)
+        public ISet<Discount> GetAllDiscount(int IdClient)
         {
             return this.FindID(IdClient).ListOfDiscount;
         }

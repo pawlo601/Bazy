@@ -8,9 +8,23 @@ namespace Domain.Model.Invoice
 {
     public class Item
     {
-        public Product.Product Thing { get; private set; }
-        public int Volume { get; private set; }
-        public Product.Money Cost { get; private set; }
+        public  int IdProdukt { get; set; }
+        public Product.Product Thing;
+        public  int Volume { get;  set; }
+        public float Value { get; set; }
+        public Product.Waluta NameOfCurrency { get; set; }
+        public Product.Money Cost;
+
+        public Item()
+        {
+            Cost = new Product.Money();
+            Thing = new Product.Product();
+            Volume = 10;
+            IdProdukt = Thing.IDProduct;
+            Value = Cost.Value;
+            NameOfCurrency = Cost.NameOfCurrency;
+        }
+
         public Item(Product.Product product, int vol)
         {
             this.Thing = product;
@@ -28,6 +42,8 @@ namespace Domain.Model.Invoice
         {
             Cost = Thing.PriceOfProduct.GetGross();
             Cost.Value *= Volume;
+            Value = Cost.Value;
+            NameOfCurrency = Cost.NameOfCurrency;
         }
         public void Count(Client.Discount dis)
         {
@@ -44,6 +60,8 @@ namespace Domain.Model.Invoice
                     Cost.Value *= Volume;
                     Cost.Value *= (float)(1.0f - dis.ValueOfBonus);
                 }
+                Value = Cost.Value;
+                NameOfCurrency = Cost.NameOfCurrency;
             }
             else
                 throw new Exception("Nie ta zniżka.\n");

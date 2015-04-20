@@ -1,22 +1,38 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Iesi.Collections.Generic;
 using Domain.Model.Client;
+using Iesi.Collections;
 
 namespace Domain.Model.Invoice
 {
     public class Invoice
     {
-        public String IdInvoice { get; private set; }
-        public String Title { get; private set; }
-        public DateTime DateOfCreate { get; private set; }
-        public Client.Client Contractor { get; private set; }
-        public List<Item> ListOfProducts { get; private set; }
-        public string Comments { get; private set; }
+        public string IdInvoice { get; set; }
+        public string Title { get; set; }
+        public DateTime DateOfCreate { get; set; }
+        public int IdClient { get; set; }
+        public Client.Client Contractor;
+        public Iesi.Collections.Generic.ISet<Item> ListOfProducts { get; set; }
+        public string Comments { get; set; }
+
         private bool CalcDis = false;
 
+        public Invoice()
+        {
+            DateOfCreate=DateTime.Now;
+            IdInvoice = "FAK/" + DateOfCreate.DayOfYear.ToString() + "/" +
+                DateOfCreate.Hour.ToString() + "/" + DateOfCreate.Minute.ToString() +
+                "/" + DateOfCreate.Second.ToString();
+            Title = "Tytul";
+            Contractor = new Client.Client();
+            IdClient = Contractor.IdClient;
+            ListOfProducts = new HashedSet<Item>();
+            Comments = "Brak komentarza";
+        }
         public Invoice(string title, Client.Client contractor)
         {
             DateOfCreate=DateTime.Now;
@@ -25,8 +41,8 @@ namespace Domain.Model.Invoice
                 "/" + DateOfCreate.Second.ToString();
             ChengeTitle(title);
             this.Contractor = contractor;
-            ListOfProducts = new List<Item>();
-            Comments = "";
+            ListOfProducts = new HashedSet<Item>();
+            Comments = "Brak komentarza";
         }
         public void ChengeTitle(string title)
         {
@@ -46,6 +62,10 @@ namespace Domain.Model.Invoice
         public void AddProduct(Product.Product product, int volume)
         {
             ListOfProducts.Add(new Item(product, volume));
+        }
+        public void AddItem(Item a)
+        {
+            ListOfProducts.Add(a);
         }
         public Item GetItem(int IdProduct)
         {
@@ -90,7 +110,7 @@ namespace Domain.Model.Invoice
             List<Product.Money> lista = new List<Product.Money>();
             foreach(Item a in ListOfProducts)
             {
-                Dodaj(lista, a.Cost);
+                lista.Add(a.Cost);
             }
             return lista;
         }
@@ -115,6 +135,15 @@ namespace Domain.Model.Invoice
             {
                 text += a.Thing.NameOfProduct;
             }
+            return text;
+        }
+        public override string ToString()
+        {
+            string pr = "";
+            foreach (Item a in ListOfProducts)
+                pr += a.ToString();
+            string text = String.Format("ID: {1}{0}Title: {2}{0}Date of create: {3}{0}Właściciel:{0}{0}{4}{0}List of Productds:{0}{0}{5}{0}Comments:{0}{6}",
+                Environment.NewLine,IdInvoice,Title,DateOfCreate.ToString(),Contractor.ToString(),pr,Comments);
             return text;
         }
     }

@@ -20,17 +20,8 @@ namespace Infrastructure.DataBase
         {
             using (ISession s = OpenSession())
             {
-                using (ITransaction t = s.BeginTransaction())
-                {
-                    s.Save(client);
-
-                    foreach (Discount a in client.ListOfDiscount)
-                    {
-                        a.IdClient = client.IdClient;
-                        s.Save(a);
-                    }
-                    t.Commit();
-                }
+                s.Save(client);
+                s.Flush();
             }
         }
         public void Delete(int Id)
@@ -55,31 +46,9 @@ namespace Infrastructure.DataBase
         }
         public List<Client> FindAll()
         {
-            List<Client> result2 = new List<Client>();
-            using (ISession s = OpenSession())
-            {
-                IQuery q = s.CreateQuery("from Client as j");
-                IList<Client> result = q.List<Client>();
-                foreach (Client a in result)
-                {
-                    result2.Add(a);
-                }
-                foreach(Client a in result2)
-                {
-                    List<Discount> result3 = new List<Discount>();
-                    q = s.CreateQuery("FROM Discount D WHERE D.IdClient = :IdClient");
-                    q.SetParameter("IdClient", a.IdClient);
-                    IList<Discount> result4 = q.List<Discount>();
-                    foreach (Discount b in result4)
-                    {
-                        result3.Add(b);
-                    }
-                    a.ListOfDiscount = result3;
-                }
-            }
-            return result2;
+            throw new NotImplementedException();
         }
-        public List<Discount> GetAllDiscount(int IdClient)
+        public ISet<Discount> GetAllDiscount(int IdClient)
         {
             throw new NotImplementedException();
         }
@@ -89,15 +58,11 @@ namespace Infrastructure.DataBase
         }
         public static void Main()
         {
-            ClientDataBaseIM a = new ClientDataBaseIM();
-            Client j1 = new Client();
-            a.Insert(j1);
-            List<Client> b = a.FindAll();
-            Console.WriteLine("Znaleziono: {0}\n", b.Count);
-            foreach (Client c in b)
-                Console.WriteLine("{0}\n", c.ToString());
-
-            Console.ReadKey();
+            ClientDataBaseIM c = new ClientDataBaseIM();
+            Client a = new Client();
+            Discount b = new Discount();
+            a.AddDiscount(b);
+            c.Insert(a);
         }
     }
 }

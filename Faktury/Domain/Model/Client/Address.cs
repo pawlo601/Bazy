@@ -18,11 +18,11 @@ namespace Domain.Model.Client
         public Address()
         {
             IDAdres = -1;
-            Street = "Ulica";
-            NumberOfBuilding = "Numer";
-            City = "Miasto";
+            Street = "asdfa";
+            NumberOfBuilding = "asdfasdfasdf";
+            City = "asdfadf";
             Code = "12-345";
-            Country = "Państwo";
+            Country = "Psfo";
         }
         public Address(String street, String number, 
                         String city, String code, 
