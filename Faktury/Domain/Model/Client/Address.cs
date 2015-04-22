@@ -18,11 +18,12 @@ namespace Domain.Model.Client
         public Address()
         {
             IDAdres = -1;
-            Street = "asdfa";
-            NumberOfBuilding = "asdfasdfasdf";
-            City = "asdfadf";
-            Code = "12-345";
-            Country = "Psfo";
+            Random ran = new Random();
+            Street = "Ulica"+ran.Next(0,2000000).ToString();
+            NumberOfBuilding = "Nr " + ran.Next(0, 2000000).ToString();
+            City = "City" + ran.Next(0, 2000000).ToString();
+            Code = ran.Next(10, 99).ToString() + "-" + ran.Next(100, 999).ToString();
+            Country = "Panstwo" + ran.Next(0, 2000000).ToString();
         }
         public Address(String street, String number, 
                         String city, String code, 
@@ -40,6 +41,5 @@ namespace Domain.Model.Client
                     "Miejscowość: " + City + " " + Code + "\n" +
                     "Państwo: " + Country + "\n";
         }
-
     }
 }

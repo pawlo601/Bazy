@@ -1,31 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Domain.Model.Client;
+using Domain.Model.Client.Repositories;
+using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Model.Client;
-using Domain.Model.Client.Repositories;
-using Infrastructure.Repositories;
 using System.IO;
+using Iesi.Collections.Generic;
+using Infrastructure.Repositories;
 
 namespace Application
 {
-    public class ClientService:IClientService
+    public class ClientService : IClientService
     {
         private IClientRepositories repo;
-        public ClientService()
+       /* public ClientService()
         {
             repo = new ClientIM();
-        }
+        }*/
         public ClientService(IClientRepositories re)
         {
             repo = re;
         }
-        public List<Client> GetAll()
+        public System.Collections.Generic.List<Client> GetAll()
         {
             return repo.FindAll();
         }
-        public List<Discount> GetAllDiscount(PersonalData p)
+        public ISet<Discount> GetAllDiscount(PersonalData p)
         {
             Client a = repo.FindPD(p);
             return a.ListOfDiscount;

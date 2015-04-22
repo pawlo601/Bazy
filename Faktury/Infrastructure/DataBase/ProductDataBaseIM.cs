@@ -92,6 +92,5 @@ namespace Infrastructure.DataBase
             }
             return result2;
         }
-         
     }
 }

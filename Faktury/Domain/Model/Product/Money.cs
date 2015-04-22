@@ -11,11 +11,27 @@ namespace Domain.Model.Product
     {
         public virtual float Value { get; set; }
         public virtual Waluta NameOfCurrency { get; set;  }
-        public Currencies Curr;
+        public Currencies Curr { get; private set; }
         public Money()
         {
-            Value = 0.00f;
-            NameOfCurrency = Waluta.PLN;
+            Random rand = new Random();
+            Value = float.MaxValue * (float)(rand.NextDouble());
+            int a = rand.Next(0, 2);
+            switch(a)
+            {
+                case 0:
+                    NameOfCurrency = Waluta.PLN;
+                    break;
+                case 1:
+                    NameOfCurrency = Waluta.EUR;
+                    break;
+                case 2:
+                    NameOfCurrency = Waluta.USD;
+                    break;
+                default:
+                    NameOfCurrency = Waluta.PLN;
+                    break;
+            }
             Curr = Currencies.GetInstance();
         }
         public Money(float val, Waluta waluta)
@@ -63,8 +79,7 @@ namespace Domain.Model.Product
         }
         public override string ToString()
         {
-            string a = String.Format("{0}{1}", Value, NameOfCurrency);
-            return a;
+            return String.Format("{0}{1}", Value, NameOfCurrency);
         }
     }
 }

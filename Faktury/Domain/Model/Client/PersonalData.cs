@@ -16,10 +16,23 @@ namespace Domain.Model.Client
 
         public PersonalData()
         {
-            Name = "-";
-            SurName = "-";
-            NameOfCompany = "Nazwa firmy";
-            Type = Typ.Firma;
+            Random rand = new Random();
+            if(rand.Next(0,1)==0)
+            {
+                Name = "-";
+                SurName = "-";
+                NameOfCompany = "Nazwa firmy";
+                NameOfCompany += rand.Next(1, 2000000).ToString();
+                Type = Typ.Firma;
+            }
+            else
+            {
+                Name = "Imie" + rand.Next(1, 2000000).ToString();
+                SurName = "Nazwisko"+rand.Next(1, 2000000).ToString();
+                NameOfCompany = "-";
+                Type = Typ.KlientPrywatny;
+            }
+            
         }
         public PersonalData(string com)
         {

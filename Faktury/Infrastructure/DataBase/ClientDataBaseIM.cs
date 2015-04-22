@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using Iesi.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
@@ -44,7 +44,7 @@ namespace Infrastructure.DataBase
         {
             throw new NotImplementedException();
         }
-        public List<Client> FindAll()
+        public System.Collections.Generic.List<Client> FindAll()
         {
             throw new NotImplementedException();
         }
@@ -56,13 +56,15 @@ namespace Infrastructure.DataBase
         {
             return new Configuration().Configure().BuildSessionFactory().OpenSession();
         }
-        public static void Main()
+        /*public static void Main()
         {
-            ClientDataBaseIM c = new ClientDataBaseIM();
-            Client a = new Client();
-            Discount b = new Discount();
-            a.AddDiscount(b);
-            c.Insert(a);
-        }
+
+                ClientDataBaseIM b = new ClientDataBaseIM();
+                Client a = new Client();
+                a.AddSomeDiscounts();
+                b.Insert(a);
+
+            // Console.ReadKey();
+        }*/
     }
 }

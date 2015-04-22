@@ -9,34 +9,49 @@ namespace Domain.Model.Invoice
     public class Item
     {
         public  int IdProdukt { get; set; }
-        public Product.Product Thing;
-        public  int Volume { get;  set; }
+        private int _volume;
+        public  int Volume 
+        { 
+            get
+            {
+                return _volume;
+            }  
+            set
+            {
+                ChangeVolume(value);
+            }
+        }
         public float Value { get; set; }
         public Product.Waluta NameOfCurrency { get; set; }
+
         public Product.Money Cost;
+        public Product.Product Thing;
 
         public Item()
         {
+            Random rand = new Random();
             Cost = new Product.Money();
-            Thing = new Product.Product();
-            Volume = 10;
-            IdProdukt = Thing.IDProduct;
+            Thing = null;
+            Volume = rand.Next(1,100);
+            IdProdukt = -1;
             Value = Cost.Value;
             NameOfCurrency = Cost.NameOfCurrency;
         }
-
         public Item(Product.Product product, int vol)
         {
             this.Thing = product;
             ChangeVolume(vol);
             Cost = new Product.Money(0.0f, Product.Waluta.PLN);
+            Value = Cost.Value;
+            NameOfCurrency = Cost.NameOfCurrency;
+            IdProdukt = Thing.IDProduct;
         }
         public void ChangeVolume(int vol)
         {
             if (vol < 0)
                 throw new Exception("Zła ilość produktów.\n");
             else
-                this.Volume = vol;
+                this._volume = vol;
         }
         public void Count()
         {
@@ -65,6 +80,17 @@ namespace Domain.Model.Invoice
             }
             else
                 throw new Exception("Nie ta zniżka.\n");
+        }
+        public override string ToString()
+        {
+            string nazwaProduktu = "";
+            if (Thing != null)
+                nazwaProduktu = Thing.NameOfProduct;
+            string text = "Id produktu: " + IdProdukt.ToString() + "\n" +
+                           "Nazwa produktu: " + nazwaProduktu + "\n" +
+                           "Ilość: " + Volume.ToString() + "\n" +
+                           "Wartość: " + Value.ToString() + NameOfCurrency.ToString() + "\n";
+            return text;
         }
     }
 }

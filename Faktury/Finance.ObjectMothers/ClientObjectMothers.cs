@@ -21,7 +21,7 @@ namespace Finance.ObjectMothers
             PersonalData per = new PersonalData("Imie", "Nazwisko");
             Address addr = new Address();
             Client a = new Client(per, addr);
-            Discount dis = new Discount(new Guid(), Bonus.Netto);
+            Discount dis = new Discount(1, Bonus.Netto);
             a.AddDiscount(dis);
             return a;
         }
@@ -30,7 +30,7 @@ namespace Finance.ObjectMothers
             PersonalData per = new PersonalData("Imie", "Nazwisko");
             Address addr = new Address();
             Client a = new Client(per, addr);
-            Discount dis = new Discount(new Guid(), Bonus.Zniżka, 0.10f);
+            Discount dis = new Discount(1, Bonus.Zniżka, 0.10f);
             a.AddDiscount(dis);
             return a;
         }
@@ -50,7 +50,7 @@ namespace Finance.ObjectMothers
             Regon reg = new Regon();
             NIP nip = new NIP();
             Client a = new Client(per, addr, reg, nip);
-            Discount dis = new Discount(new Guid(), Bonus.Netto);
+            Discount dis = new Discount(1, Bonus.Netto);
             a.AddDiscount(dis);
             return a;
         }
@@ -61,7 +61,7 @@ namespace Finance.ObjectMothers
             Regon reg = new Regon();
             NIP nip = new NIP();
             Client a = new Client(per, addr, reg, nip);
-            Discount dis = new Discount(new Guid(), Bonus.Zniżka, 0.1f);
+            Discount dis = new Discount(1, Bonus.Zniżka, 0.1f);
             a.AddDiscount(dis);
             return a;
         }
@@ -72,12 +72,12 @@ namespace Finance.ObjectMothers
         }
         public static Discount CreateDiscountNetto()
         {
-            Discount dis = new Discount(new Guid(), Bonus.Netto);
+            Discount dis = new Discount(1, Bonus.Netto);
             return dis;
         }
         public static Discount CreateDiscountZnizka()
         {
-            Discount dis = new Discount(new Guid(), Bonus.Zniżka);
+            Discount dis = new Discount(1, Bonus.Zniżka);
             return dis;
         }
         public static Regon CreateRegon()

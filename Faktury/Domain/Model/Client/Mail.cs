@@ -32,9 +32,5 @@ namespace Domain.Model.Client
         {
             return "Mail: " + MailClient;
         }
-        public string GetString()
-        {
-            return MailClient;
-        }
     }
 }

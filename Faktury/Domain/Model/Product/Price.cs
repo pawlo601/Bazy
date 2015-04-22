@@ -10,10 +10,12 @@ namespace Domain.Model.Product
     {
         public virtual Money NetPrice { get; set; }
         public virtual float VAT { get; set; }
+
         public Price()
         {
             NetPrice = new Money();
-            VAT = 0.19f;
+            Random rand = new Random();
+            VAT = (float)rand.NextDouble();
         }
         public Price(Money a, float vat)
         {

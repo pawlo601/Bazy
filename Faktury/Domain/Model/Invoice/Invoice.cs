@@ -12,26 +12,49 @@ namespace Domain.Model.Invoice
     public class Invoice
     {
         public string IdInvoice { get; set; }
-        public string Title { get; set; }
+        private string _title;
+        public string Title 
+        {
+            get 
+            {
+                return _title;
+            }
+            set
+            {
+                ChengeTitle(value);
+            }
+        }
         public DateTime DateOfCreate { get; set; }
         public int IdClient { get; set; }
-        public Client.Client Contractor;
         public Iesi.Collections.Generic.ISet<Item> ListOfProducts { get; set; }
-        public string Comments { get; set; }
+        private string _comments;
+        public string Comments 
+        {
+            get
+            {
+                return _comments;
+            }
+            set
+            {
+                SetComments(value);
+            }
+        }
 
         private bool CalcDis = false;
+        public Client.Client Contractor;
 
         public Invoice()
         {
+            Random rand = new Random();
             DateOfCreate=DateTime.Now;
             IdInvoice = "FAK/" + DateOfCreate.DayOfYear.ToString() + "/" +
                 DateOfCreate.Hour.ToString() + "/" + DateOfCreate.Minute.ToString() +
                 "/" + DateOfCreate.Second.ToString();
-            Title = "Tytul";
-            Contractor = new Client.Client();
-            IdClient = Contractor.IdClient;
+            Title = "Tytul" + rand.Next(1, 100000).ToString();
+            Contractor = null;
+            IdClient = -1;
             ListOfProducts = new HashedSet<Item>();
-            Comments = "Brak komentarza";
+            Comments = "Brak komentarza"+rand.Next(1,10000).ToString();
         }
         public Invoice(string title, Client.Client contractor)
         {
@@ -44,20 +67,28 @@ namespace Domain.Model.Invoice
             ListOfProducts = new HashedSet<Item>();
             Comments = "Brak komentarza";
         }
+        public void SetComments(string comm)
+        {
+            if (comm.Length > 250)
+                this._comments = comm.Substring(0, 250);
+            else
+                this._comments = comm;
+        }
+        public virtual void AddSomeItems()
+        {
+            Random rand = new Random();
+            int j = rand.Next(1, 3);
+            for (int i = 0; i < j; i++)
+            {
+                ListOfProducts.Add(new Item());
+            }
+        }
         public void ChengeTitle(string title)
         {
-            if (title.Length < 20)
-                this.Title = title;
+            if (title.Length < 30)
+                this._title = title;
             else
-                this.Title = title.Substring(0, 20);
-        }
-        public void ChengeDate(DateTime date)
-        {
-            DateOfCreate = date;
-        }
-        public void ChengeContractor(Client.Client contractor)
-        {
-            this.Contractor = contractor;
+                this._title = title.Substring(0, 30);
         }
         public void AddProduct(Product.Product product, int volume)
         {
@@ -133,17 +164,20 @@ namespace Domain.Model.Invoice
             string text = "";
             foreach(Item a in ListOfProducts)
             {
-                text += a.Thing.NameOfProduct;
+                text += a.Thing.NameOfProduct+"\n";
             }
             return text;
         }
         public override string ToString()
         {
+            string stringCon="---";
+            if (Contractor != null)
+                stringCon = Contractor.ToString();
             string pr = "";
             foreach (Item a in ListOfProducts)
-                pr += a.ToString();
+                pr += a.ToString()+"\n";
             string text = String.Format("ID: {1}{0}Title: {2}{0}Date of create: {3}{0}Właściciel:{0}{0}{4}{0}List of Productds:{0}{0}{5}{0}Comments:{0}{6}",
-                Environment.NewLine,IdInvoice,Title,DateOfCreate.ToString(),Contractor.ToString(),pr,Comments);
+                Environment.NewLine, IdInvoice, Title, DateOfCreate.ToString(), stringCon, pr, Comments);
             return text;
         }
     }

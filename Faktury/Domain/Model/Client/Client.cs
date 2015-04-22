@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using Iesi.Collections;
 using Iesi.Collections.Generic;
 /*
+ drop table ListOfDiscount
+ go
+  
  create table ListOfDiscount
 (
 	ID_Client int,
-	IdClient int,
 	IdProduct int,
 	ValueOfBonus float,
 	Type varchar(10)
@@ -39,6 +41,15 @@ namespace Domain.Model.Client
             NumberOfPhone = new Phone();
             MailToClient = new Mail();
             ListOfDiscount = new HashedSet<Discount>();
+        }
+        public virtual void AddSomeDiscounts()
+        {
+            Random rand = new Random();
+            int j=rand.Next(1,3);
+            for (int i = 0; i < j; i++)
+            {
+                ListOfDiscount.Add(new Discount());
+            }
         }
         public Client(PersonalData name, Address lok)
         {
@@ -81,10 +92,21 @@ namespace Domain.Model.Client
         }
         public override string ToString()
         {
-            string a = IdClient.ToString()+"\n";
-            foreach (Discount b in ListOfDiscount)
-                a += b.ToString()+"\n";
-            return a;
+            string text = String.Format("ID klienta: {1}{0}", Environment.NewLine, IdClient.ToString()) +
+                                    "====================================" +
+                                    String.Format("Dane:{0}{0}{1}", Environment.NewLine, Data.ToString()) +
+                                    "====================================" +
+                                    String.Format("Adres:{0}{0}{1}", Environment.NewLine, Localisation.ToString()) +
+                                    "====================================" +
+                                    String.Format("Regon, NIP:{0}{1}{0}{2}", Environment.NewLine, Regon.ToString(), Nip.ToString()) +
+                                    "====================================" +
+                                    String.Format("Kontakt:{0}{1}{0}{2}", Environment.NewLine, MailToClient.ToString(), NumberOfPhone.ToString()) +
+                                    "====================================" +
+                                    String.Format("Zniżki:{0}", Environment.NewLine);
+            foreach (Discount a in ListOfDiscount)
+                text += a.ToString() + "------------------------------------";
+
+            return text;
         }
     }
 }

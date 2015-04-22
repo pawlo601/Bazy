@@ -13,6 +13,7 @@ namespace Domain.Model.Product
         public virtual string NameOfProduct { get; set; }
         public virtual TypProduktu Type { get; set; }
         public virtual Price PriceOfProduct { get; set; }
+
         private string _comments;
         public virtual string Comments 
         { 
@@ -29,7 +30,20 @@ namespace Domain.Model.Product
         {
             IDProduct = -1;
             NameOfProduct = "Nazwa Produktu";
-            Type = TypProduktu.Przedmiot;
+            Random rand = new Random();
+            NameOfProduct += rand.Next(1, 2000000).ToString();
+            switch(rand.Next(0,1))
+            {
+                case 0:
+                    Type = TypProduktu.Przedmiot;
+                    break;
+                case 1:
+                    Type = TypProduktu.Usługa;
+                    break;
+                default:
+                    Type = TypProduktu.Usługa;
+                    break;
+            }
             PriceOfProduct = new Price();
             Comments = "Brak komentarza";
         }

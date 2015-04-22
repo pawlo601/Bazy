@@ -100,19 +100,18 @@ namespace Infrastructure.DataBase
         {
             return new Configuration().Configure().BuildSessionFactory().OpenSession();
         }
-       /* public static void Main()
+        /*public static void Main()
         {
             using (var s = OpenSession())
             {
                 InvoiceDataBaseIM b = new InvoiceDataBaseIM();
                 Invoice a = new Invoice();
-                Item c = new Item();
-                a.AddItem(c);
+                a.AddSomeItems();
                 b.Insert(a);
                 s.Save(a);
                 s.Flush();
             }
-            Console.ReadKey();
+           // Console.ReadKey();
         }*/
     }
 }

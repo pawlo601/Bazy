@@ -35,7 +35,7 @@ namespace Finance.Domain.UniTest
             Invoice a = InvoiceObjectMothers.CreateInvoicePrivWithDis2PrzedUsl();
 
             DateTime b = DateTime.Now;
-            a.ChengeDate(b);
+            a.DateOfCreate = b;
             Assert.IsTrue(a.DateOfCreate.Equals(b));
 
             string tit = "tyty";

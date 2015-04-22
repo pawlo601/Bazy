@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Finance.ObjectMothers;
 using Domain.Model.Client;
+using Iesi.Collections.Generic;
 
 namespace Finance.Domain.UniTest
 {

@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Iesi.Collections.Generic;
 
 namespace Domain.Model.Client.Repositories
 {
@@ -14,7 +14,7 @@ namespace Domain.Model.Client.Repositories
         Client FindNIP(NIP nip);
         Client FindPD(PersonalData pd);
         Client FindREGON(Regon regon);
-        List<Client> FindAll();
+        System.Collections.Generic.List<Client> FindAll();
         ISet<Discount> GetAllDiscount(int IdClient);
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class ClientIM 
+    public class ClientIM : IClientRepositories
     {
         private System.Collections.Generic.List<Client> clients = new System.Collections.Generic.List<Client>();
         public ClientIM()

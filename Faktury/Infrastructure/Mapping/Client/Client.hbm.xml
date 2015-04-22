@@ -26,7 +26,6 @@
     <set name="ListOfDiscount" lazy="true" >
       <key column="ID_Client"/>
       <composite-element class="Discount">
-        <property name="IdClient" />
         <property name="IdProduct" />
         <property name="ValueOfBonus" />
         <property type="Infrastructure.Mapping.BonusType, Infrastructure" name="Type"/>

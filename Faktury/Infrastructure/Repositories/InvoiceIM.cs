@@ -118,6 +118,5 @@ namespace Infrastructure.Repositories
             }
             return lista;
         }
-
     }
 }
