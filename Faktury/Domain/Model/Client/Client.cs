@@ -33,7 +33,7 @@ namespace Domain.Model.Client
 
         public Client()
         {
-            IdClient = -1;
+            IdClient = 1;
             Data = new PersonalData();
             Localisation = new Address();
             Regon = new Regon();
@@ -45,10 +45,11 @@ namespace Domain.Model.Client
         public virtual void AddSomeDiscounts()
         {
             Random rand = new Random();
-            int j=rand.Next(1,3);
+            int j=rand.Next(1,6);
             for (int i = 0; i < j; i++)
             {
                 ListOfDiscount.Add(new Discount());
+                System.Threading.Thread.Sleep(50);
             }
         }
         public Client(PersonalData name, Address lok)

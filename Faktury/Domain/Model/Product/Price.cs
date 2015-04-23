@@ -14,8 +14,7 @@ namespace Domain.Model.Product
         public Price()
         {
             NetPrice = new Money();
-            Random rand = new Random();
-            VAT = (float)rand.NextDouble();
+            VAT = 0.19f;
         }
         public Price(Money a, float vat)
         {

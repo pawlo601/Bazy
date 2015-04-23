@@ -31,9 +31,9 @@ namespace Domain.Model.Invoice
         {
             Random rand = new Random();
             Cost = new Product.Money();
-            Thing = null;
+            Thing = new Product.Product();
             Volume = rand.Next(1,100);
-            IdProdukt = -1;
+            IdProdukt = rand.Next(1,100);
             Value = Cost.Value;
             NameOfCurrency = Cost.NameOfCurrency;
         }

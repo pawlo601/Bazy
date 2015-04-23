@@ -1,10 +1,10 @@
-﻿<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="Domain.Model.Invoice" assembly="Domain" default-lazy="false">
+﻿<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="Domain.Model.Invoice" assembly="Domain">
   <class name="Invoice">
     <id name="IdInvoice"/>
     <property name="Title" />
     <property name="DateOfCreate" />
     <property name="IdClient"/>
-    <set name="ListOfProducts" lazy="true" >
+    <set name="ListOfProducts" lazy="false" >
       <key column="ID_Invoice"/>
       <composite-element class="Item">
         <property name="IdProdukt" />

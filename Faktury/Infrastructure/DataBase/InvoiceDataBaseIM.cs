@@ -16,9 +16,7 @@ using Domain.Model.Invoice.Repositories;
 using Iesi.Collections.Generic;
 using Iesi.Collections;
 using System.Collections;
-
 /*
- *
     create table Invoice
 (
 	IdInvoice varchar(30) primary key,
@@ -49,22 +47,39 @@ namespace Infrastructure.DataBase
             {
                 using (ITransaction t = s.BeginTransaction())
                 {
-                    Invoice b = new Invoice();
-                    Item c = new Item();
-                    b.AddItem(c);
-                    s.Save(b);
-                    s.Flush();
+                    s.Save(invoice);
+                    t.Commit();
                 }
             }
         }
         public void Delete(string Id)
         {
-            throw new NotImplementedException();
+            using (var session = OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var queryString = string.Format("delete {0} where IdInvoice = :id", typeof(Invoice));
+                session.CreateQuery(queryString)
+                       .SetParameter("id", Id)
+                       .ExecuteUpdate();
+                transaction.Commit();
+            }
         }
 
         public Invoice Find(string Id)
         {
-            throw new NotImplementedException();
+            using (ISession s = OpenSession())
+            {
+                IQuery q = s.CreateQuery("FROM Invoice P WHERE P.IdInvoice = '" + Id+"'");
+                IList<Invoice> result = q.List<Invoice>();
+                if (result.Count == 0)
+                    return null;
+                else
+                {
+                    foreach (Invoice a in result)
+                        return a;
+                }
+            }
+            return null;
         }
 
         public List<Invoice> FindAll()
@@ -100,18 +115,5 @@ namespace Infrastructure.DataBase
         {
             return new Configuration().Configure().BuildSessionFactory().OpenSession();
         }
-        /*public static void Main()
-        {
-            using (var s = OpenSession())
-            {
-                InvoiceDataBaseIM b = new InvoiceDataBaseIM();
-                Invoice a = new Invoice();
-                a.AddSomeItems();
-                b.Insert(a);
-                s.Save(a);
-                s.Flush();
-            }
-           // Console.ReadKey();
-        }*/
     }
 }

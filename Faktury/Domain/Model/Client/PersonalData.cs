@@ -17,7 +17,7 @@ namespace Domain.Model.Client
         public PersonalData()
         {
             Random rand = new Random();
-            if(rand.Next(0,1)==0)
+            if(rand.Next(0,100)%2==0)
             {
                 Name = "-";
                 SurName = "-";

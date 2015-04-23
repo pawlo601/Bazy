@@ -26,11 +26,31 @@ namespace Infrastructure.DataBase
         }
         public void Delete(int Id)
         {
-            throw new NotImplementedException();
+            using (var session = OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var queryString = string.Format("delete {0} where IdClient = :id", typeof(Client));
+                session.CreateQuery(queryString)
+                       .SetParameter("id", Id)
+                       .ExecuteUpdate();
+                transaction.Commit();
+            }
         }
         public Client FindID(int Id)
         {
-            throw new NotImplementedException();
+            using (ISession s = OpenSession())
+            {
+                IQuery q = s.CreateQuery("FROM Client P WHERE P.IdClient = " + Id.ToString());
+                System.Collections.Generic.IList<Client> result = q.List<Client>();
+                if (result.Count == 0)
+                    return null;
+                else
+                {
+                    foreach (Client a in result)
+                        return a;
+                }
+            }
+            return null;
         }
         public Client FindNIP(NIP nip)
         {
@@ -56,15 +76,5 @@ namespace Infrastructure.DataBase
         {
             return new Configuration().Configure().BuildSessionFactory().OpenSession();
         }
-        /*public static void Main()
-        {
-
-                ClientDataBaseIM b = new ClientDataBaseIM();
-                Client a = new Client();
-                a.AddSomeDiscounts();
-                b.Insert(a);
-
-            // Console.ReadKey();
-        }*/
     }
 }

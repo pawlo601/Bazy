@@ -11,9 +11,9 @@ namespace Domain.Model.Invoice
 {
     public class Invoice
     {
-        public string IdInvoice { get; set; }
+        public virtual string IdInvoice { get; set; }
         private string _title;
-        public string Title 
+        public virtual string Title 
         {
             get 
             {
@@ -24,11 +24,11 @@ namespace Domain.Model.Invoice
                 ChengeTitle(value);
             }
         }
-        public DateTime DateOfCreate { get; set; }
-        public int IdClient { get; set; }
-        public Iesi.Collections.Generic.ISet<Item> ListOfProducts { get; set; }
+        public virtual DateTime DateOfCreate { get; set; }
+        public virtual int IdClient { get; set; }
+        public virtual Iesi.Collections.Generic.ISet<Item> ListOfProducts { get; set; }
         private string _comments;
-        public string Comments 
+        public virtual string Comments 
         {
             get
             {
@@ -41,7 +41,7 @@ namespace Domain.Model.Invoice
         }
 
         private bool CalcDis = false;
-        public Client.Client Contractor;
+        public virtual Client.Client Contractor { get;  set; }
 
         public Invoice()
         {
@@ -49,10 +49,10 @@ namespace Domain.Model.Invoice
             DateOfCreate=DateTime.Now;
             IdInvoice = "FAK/" + DateOfCreate.DayOfYear.ToString() + "/" +
                 DateOfCreate.Hour.ToString() + "/" + DateOfCreate.Minute.ToString() +
-                "/" + DateOfCreate.Second.ToString();
+                "/" + (DateOfCreate.Second+DateOfCreate.Millisecond).ToString();
             Title = "Tytul" + rand.Next(1, 100000).ToString();
-            Contractor = null;
-            IdClient = -1;
+            Contractor = new Client.Client();
+            IdClient = rand.Next(1,100);
             ListOfProducts = new HashedSet<Item>();
             Comments = "Brak komentarza"+rand.Next(1,10000).ToString();
         }
@@ -67,7 +67,7 @@ namespace Domain.Model.Invoice
             ListOfProducts = new HashedSet<Item>();
             Comments = "Brak komentarza";
         }
-        public void SetComments(string comm)
+        public virtual void SetComments(string comm)
         {
             if (comm.Length > 250)
                 this._comments = comm.Substring(0, 250);
@@ -81,24 +81,25 @@ namespace Domain.Model.Invoice
             for (int i = 0; i < j; i++)
             {
                 ListOfProducts.Add(new Item());
+                System.Threading.Thread.Sleep(50);
             }
         }
-        public void ChengeTitle(string title)
+        public virtual void ChengeTitle(string title)
         {
             if (title.Length < 30)
                 this._title = title;
             else
                 this._title = title.Substring(0, 30);
         }
-        public void AddProduct(Product.Product product, int volume)
+        public virtual void AddProduct(Product.Product product, int volume)
         {
             ListOfProducts.Add(new Item(product, volume));
         }
-        public void AddItem(Item a)
+        public virtual void AddItem(Item a)
         {
             ListOfProducts.Add(a);
         }
-        public Item GetItem(int IdProduct)
+        public virtual Item GetItem(int IdProduct)
         {
             foreach(Item a in ListOfProducts)
             {
@@ -107,7 +108,7 @@ namespace Domain.Model.Invoice
             }
             return null;
         }
-        public Item GetItem(string name)
+        public virtual Item GetItem(string name)
         {
             foreach (Item a in ListOfProducts)
             {
@@ -116,7 +117,7 @@ namespace Domain.Model.Invoice
             }
             return null;
         }
-        public void CalculateDiscount()
+        public virtual void CalculateDiscount()
         {
             foreach(Item a in ListOfProducts)
             {
@@ -134,7 +135,7 @@ namespace Domain.Model.Invoice
             }
             CalcDis = true;
         }
-        public List<Product.Money> Podsumowanie()
+        public virtual List<Product.Money> Podsumowanie()
         {
             if (!CalcDis)
                 CalculateDiscount();
@@ -159,7 +160,7 @@ namespace Domain.Model.Invoice
             if (flag)
                 lista.Add(cost);
         }
-        public string ListOfProduct()
+        public virtual string ListOfProduct()
         {
             string text = "";
             foreach(Item a in ListOfProducts)

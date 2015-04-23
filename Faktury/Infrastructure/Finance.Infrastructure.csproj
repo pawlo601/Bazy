@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase\ClientDataBaseIM.cs" />
+    <Compile Include="DataBase\DataBase.cs" />
     <Compile Include="DataBase\InvoiceDataBaseIM.cs" />
     <Compile Include="DataBase\ProductDataBaseIM.cs" />
     <Compile Include="DataDataSet.Designer.cs">

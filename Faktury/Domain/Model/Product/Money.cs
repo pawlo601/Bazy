@@ -15,8 +15,8 @@ namespace Domain.Model.Product
         public Money()
         {
             Random rand = new Random();
-            Value = float.MaxValue * (float)(rand.NextDouble());
-            int a = rand.Next(0, 2);
+            Value = (float)(rand.Next(0,100000)/1000);
+            int a = rand.Next(0, 3);
             switch(a)
             {
                 case 0:

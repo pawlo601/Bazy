@@ -45,12 +45,32 @@ namespace Infrastructure.DataBase
 
         public void Delete(int Id)
         {
-            throw new NotImplementedException();
+            using (var session = OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var queryString = string.Format("delete {0} where IDProduct = :id", typeof(Product));
+                session.CreateQuery(queryString)
+                       .SetParameter("id", Id)
+                       .ExecuteUpdate();
+                transaction.Commit();
+            }
         }
 
         public Product Find(int Id)
         {
-            throw new NotImplementedException();
+            using (ISession s = OpenSession())
+            {
+                IQuery q = s.CreateQuery("FROM Product P WHERE P.IDProduct = "+Id.ToString());
+                IList<Product> result = q.List<Product>();
+                if (result.Count == 0)
+                    return null;
+                else
+                {
+                    foreach (Product a in result)
+                        return a;
+                }
+            }
+            return null;
         }
 
         public void Delete(string name)

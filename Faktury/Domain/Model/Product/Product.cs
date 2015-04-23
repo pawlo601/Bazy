@@ -31,8 +31,8 @@ namespace Domain.Model.Product
             IDProduct = -1;
             NameOfProduct = "Nazwa Produktu";
             Random rand = new Random();
-            NameOfProduct += rand.Next(1, 2000000).ToString();
-            switch(rand.Next(0,1))
+            NameOfProduct += rand.Next(1, 20000).ToString();
+            switch(rand.Next(0,2))
             {
                 case 0:
                     Type = TypProduktu.Przedmiot;
